@@ -6,9 +6,12 @@
 <div class="container">
     <div class="nav-bar">
         <span class="logo">SpinCoach</span>
-        <a href="/select-user" class="user-badge" onclick="event.preventDefault(); switchUser();">
-            {{ request()->user()->avatar_emoji ?? '' }} {{ request()->user()->name ?? '' }}
-        </a>
+        <div style="display:flex;align-items:center;gap:16px;">
+            <a href="/settings" style="font-size:14px;color:var(--text-secondary);">Settings</a>
+            <a href="/select-user" class="user-badge" onclick="event.preventDefault(); switchUser();">
+                {{ request()->user()->avatar_emoji ?? '' }} {{ request()->user()->name ?? '' }}
+            </a>
+        </div>
     </div>
 
     <h1>Let's ride</h1>

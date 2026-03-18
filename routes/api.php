@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RouteController;
+use App\Http\Controllers\SpotifyController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkoutController;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,13 @@ Route::middleware('current-user')->group(function () {
     // Virtual routes
     Route::get('/routes', [RouteController::class, 'apiIndex']);
     Route::get('/routes/{id}/waypoints', [RouteController::class, 'apiWaypoints']);
+
+    // Spotify
+    Route::get('/spotify/status', [SpotifyController::class, 'apiStatus']);
+    Route::get('/spotify/devices', [SpotifyController::class, 'apiDevices']);
+    Route::get('/spotify/now-playing', [SpotifyController::class, 'apiNowPlaying']);
+    Route::post('/spotify/play', [SpotifyController::class, 'apiPlay']);
+    Route::post('/spotify/pause', [SpotifyController::class, 'apiPause']);
+    Route::post('/spotify/next', [SpotifyController::class, 'apiNext']);
+    Route::put('/spotify/volume', [SpotifyController::class, 'apiVolume']);
 });
