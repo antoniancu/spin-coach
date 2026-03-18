@@ -11,6 +11,12 @@ const WorkoutPlayer = (() => {
     let sessionStartTime = 0;
     let wakeLock = null;
     let aborted = false;
+    let cadenceSamples = [];
+    let hrSamples = [];
+    let paused = false;
+    let pauseStartTime = 0;
+    let totalPausedMs = 0;
+    let waitingForFirstPedal = true;
 
     // DOM elements
     const els = {};
@@ -42,12 +48,30 @@ const WorkoutPlayer = (() => {
         currentPhaseIndex = index;
         warningFired = false;
         phaseStartTime = performance.now();
+        cadenceSamples = [];
+        hrSamples = [];
+        totalPausedMs = 0;
+
+        // First phase waits for pedalling; subsequent phases start immediately
+        if (index === 0) {
+            waitingForFirstPedal = true;
+            paused = true;
+            pauseStartTime = performance.now();
+        } else {
+            waitingForFirstPedal = false;
+            paused = false;
+            pauseStartTime = 0;
+        }
 
         const phase = phases[index];
-        els.phaseType.textContent = phase.type.toUpperCase();
+        els.phaseType.textContent = waitingForFirstPedal ? 'START PEDALLING' : phase.type.toUpperCase();
+        els.timer.style.opacity = waitingForFirstPedal ? '0.4' : '1';
         els.phaseLabel.textContent = phase.label;
         els.cadence.textContent = phase.rpm_low + '–' + phase.rpm_high + ' RPM';
-        els.resistance.textContent = 'Resistance ' + phase.resistance;
+        // Update resistance control if available, otherwise fallback to text
+        if (typeof setResistanceDisplay === 'function') {
+            setResistanceDisplay(phase.resistance, phase.resistance);
+        }
 
         // Color the timer based on phase type
         const colors = { warmup: '#f59e0b', work: '#ef4444', rest: '#10b981', cooldown: '#2563eb' };
@@ -71,7 +95,12 @@ const WorkoutPlayer = (() => {
     function tick(timestamp) {
         if (aborted) return;
 
-        const elapsed = timestamp - phaseStartTime;
+        if (paused) {
+            rafId = requestAnimationFrame(tick);
+            return;
+        }
+
+        const elapsed = timestamp - phaseStartTime - totalPausedMs;
         const phase = phases[currentPhaseIndex];
         const totalMs = phase.duration_sec * 1000;
         const remaining = totalMs - elapsed;
@@ -85,6 +114,11 @@ const WorkoutPlayer = (() => {
         // Update progress bar
         const progress = Math.min(100, (elapsed / totalMs) * 100);
         els.progressBar.style.width = progress + '%';
+
+        // Update workout profile cursor
+        if (typeof updateProfileCursor === 'function') {
+            updateProfileCursor(currentPhaseIndex, Math.floor(elapsed / 1000));
+        }
 
         // 5-second warning
         if (remaining <= 5000 && remaining > 0 && !warningFired) {
@@ -119,8 +153,8 @@ const WorkoutPlayer = (() => {
                 target_resistance: phase.resistance,
                 duration_sec: phase.duration_sec,
                 actual_duration_sec: Math.round(actualMs / 1000),
-                avg_cadence_rpm: null,
-                avg_heart_rate_bpm: null,
+                avg_cadence_rpm: cadenceSamples.length ? Math.round(cadenceSamples.reduce((a, b) => a + b, 0) / cadenceSamples.length) : null,
+                avg_heart_rate_bpm: hrSamples.length ? Math.round(hrSamples.reduce((a, b) => a + b, 0) / hrSamples.length) : null,
             }),
         }).catch(() => {});
 
@@ -136,15 +170,9 @@ const WorkoutPlayer = (() => {
         Audio.complete();
         releaseWakeLock();
 
-        els.phaseType.textContent = completed ? 'FINISHED' : 'ENDED';
-        els.phaseLabel.textContent = completed ? 'Great ride!' : 'Ride ended';
-        els.timer.textContent = formatTime(totalSec);
-        els.timer.style.color = '#10b981';
-        els.cadence.textContent = '';
-        els.resistance.textContent = '';
-        els.nextPhase.textContent = '';
-        els.progressBar.style.width = '100%';
+        els.timer.style.opacity = '1';
 
+        // Send finish request first, then show feedback
         fetch('/api/workout/' + sessionId + '/finish', {
             method: 'POST',
             headers: {
@@ -159,12 +187,11 @@ const WorkoutPlayer = (() => {
         })
         .then(r => r.json())
         .then(res => {
-            if (res.data && res.data.summary_url) {
-                setTimeout(() => window.location.href = res.data.summary_url, 3000);
-            }
+            const summaryUrl = (res.data && res.data.summary_url) || '/home';
+            showFeedbackScreen(totalSec, completed, summaryUrl);
         })
         .catch(() => {
-            setTimeout(() => window.location.href = '/home', 3000);
+            showFeedbackScreen(totalSec, completed, '/home');
         });
     }
 
@@ -202,5 +229,99 @@ const WorkoutPlayer = (() => {
         }
     });
 
-    return { init, abort };
+    function showFeedbackScreen(totalSec, completed, summaryUrl) {
+        const display = document.getElementById('ride-display');
+        display.innerHTML = '';
+        display.className = 'ride-display ride-feedback';
+
+        const title = document.createElement('div');
+        title.className = 'ride-phase-label';
+        title.textContent = completed ? 'FINISHED' : 'ENDED';
+        display.appendChild(title);
+
+        const subtitle = document.createElement('div');
+        subtitle.className = 'ride-phase-name';
+        subtitle.textContent = completed ? 'Great ride!' : 'Ride ended';
+        display.appendChild(subtitle);
+
+        const timer = document.createElement('div');
+        timer.className = 'ride-timer';
+        timer.style.color = '#10b981';
+        timer.textContent = formatTime(totalSec);
+        display.appendChild(timer);
+
+        const prompt = document.createElement('div');
+        prompt.className = 'feedback-prompt';
+        prompt.textContent = 'How did that feel?';
+        display.appendChild(prompt);
+
+        const options = [
+            { value: 1, emoji: '😴', label: 'Too easy' },
+            { value: 2, emoji: '😌', label: 'Easy' },
+            { value: 3, emoji: '💪', label: 'Just right' },
+            { value: 4, emoji: '😤', label: 'Hard' },
+            { value: 5, emoji: '🥵', label: 'Too hard' },
+        ];
+
+        const grid = document.createElement('div');
+        grid.className = 'feedback-grid';
+
+        options.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'feedback-btn';
+            btn.innerHTML = '<span class="feedback-emoji">' + opt.emoji + '</span><span class="feedback-label">' + opt.label + '</span>';
+            btn.onclick = () => submitFeedback(opt.value, summaryUrl);
+            grid.appendChild(btn);
+        });
+
+        display.appendChild(grid);
+
+        const skip = document.createElement('button');
+        skip.className = 'feedback-skip';
+        skip.textContent = 'Skip';
+        skip.onclick = () => { window.location.href = summaryUrl; };
+        display.appendChild(skip);
+    }
+
+    function submitFeedback(effort, summaryUrl) {
+        fetch('/api/workout/' + sessionId + '/finish', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrf,
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({ perceived_effort: effort }),
+        })
+        .then(() => { window.location.href = summaryUrl; })
+        .catch(() => { window.location.href = summaryUrl; });
+    }
+
+    function recordCadence(rpm) {
+        cadenceSamples.push(rpm);
+
+        if (rpm >= 5 && paused && !aborted) {
+            // Resume from pause (or first pedal)
+            totalPausedMs += performance.now() - pauseStartTime;
+            paused = false;
+            waitingForFirstPedal = false;
+            els.phaseType.textContent = phases[currentPhaseIndex].type.toUpperCase();
+            els.timer.style.opacity = '1';
+        } else if (rpm <= 0 && !paused && !aborted) {
+            // Stopped pedalling — pause
+            paused = true;
+            pauseStartTime = performance.now();
+            els.phaseType.textContent = 'PAUSED';
+            els.timer.style.opacity = '0.4';
+        }
+    }
+    function recordHR(bpm) { hrSamples.push(bpm); }
+    function getCurrentTarget() {
+        if (aborted || currentPhaseIndex >= phases.length) return null;
+        const p = phases[currentPhaseIndex];
+        return { low: p.rpm_low, high: p.rpm_high };
+    }
+    function isPaused() { return paused; }
+
+    return { init, abort, recordCadence, recordHR, getCurrentTarget, isPaused };
 })();

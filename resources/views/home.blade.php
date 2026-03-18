@@ -6,8 +6,9 @@
 <div class="container">
     <div class="nav-bar">
         <span class="logo">SpinCoach</span>
-        <div style="display:flex;align-items:center;gap:16px;">
-            <a href="/settings" style="font-size:14px;color:var(--text-secondary);">Settings</a>
+        <div style="display:flex;align-items:center;gap:14px;">
+            <a href="/history" class="nav-icon" aria-label="History">&#128336;</a>
+            <a href="/settings" class="nav-icon" aria-label="Settings">&#9881;</a>
             <a href="/select-user" class="user-badge" onclick="event.preventDefault(); switchUser();">
                 {{ request()->user()->avatar_emoji ?? '' }} {{ request()->user()->name ?? '' }}
             </a>
@@ -36,7 +37,8 @@
     <div id="workout-preview" class="workout-preview">
         <h3 id="preview-name"></h3>
         <p id="preview-desc"></p>
-        <p id="preview-phases" style="margin-top:6px;font-size:13px;color:var(--text-secondary);"></p>
+        <div id="preview-profile" class="preview-profile"></div>
+        <p id="preview-phases" style="margin-top:8px;font-size:13px;color:var(--text-secondary);"></p>
     </div>
 
     <button id="start-btn" class="btn btn-start hidden" onclick="startRide()">Let's SPIN! 🚴</button>
@@ -73,11 +75,82 @@ function fetchWorkout() {
             workoutId = res.data.id;
             document.getElementById('preview-name').textContent = res.data.name;
             document.getElementById('preview-desc').textContent = res.data.description || '';
-            document.getElementById('preview-phases').textContent = res.data.phase_count + ' phases';
+            document.getElementById('preview-phases').textContent = res.data.phase_count + ' phases · ' + res.data.duration_min + ' min';
             document.getElementById('workout-preview').classList.add('visible');
             document.getElementById('start-btn').classList.remove('hidden');
+            if (res.data.phases) buildPreviewProfile(res.data.phases, res.data.duration_min);
         }
     });
+}
+
+function buildPreviewProfile(phases, totalMin) {
+    const container = document.getElementById('preview-profile');
+    container.innerHTML = '';
+
+    const totalSec = phases.reduce((s, p) => s + p.duration_sec, 0);
+    const maxRes = Math.max(...phases.map(p => p.resistance), 1);
+    const colors = { warmup: '#f59e0b', work: '#ef4444', rest: '#10b981', cooldown: '#2563eb' };
+
+    // Build 1-minute bars
+    const bars = [];
+    let secCursor = 0;
+
+    phases.forEach(phase => {
+        const phaseEnd = secCursor + phase.duration_sec;
+        while (secCursor < phaseEnd) {
+            const barEnd = Math.min(secCursor + 60, phaseEnd);
+            const fraction = (barEnd - secCursor) / 60;
+            bars.push({
+                resistance: phase.resistance,
+                type: phase.type,
+                fraction: fraction,
+                label: phase.label,
+            });
+            secCursor = barEnd;
+        }
+    });
+
+    const wrap = document.createElement('div');
+    wrap.className = 'preview-bars';
+
+    bars.forEach((bar, i) => {
+        const col = document.createElement('div');
+        col.className = 'preview-bar-col';
+        col.style.flex = bar.fraction;
+
+        const fill = document.createElement('div');
+        fill.className = 'preview-bar-fill';
+        const heightPct = (bar.resistance / maxRes) * 100;
+        fill.style.height = heightPct + '%';
+        fill.style.background = colors[bar.type] || '#555';
+
+        const levelLabel = document.createElement('span');
+        levelLabel.className = 'preview-bar-level';
+        levelLabel.textContent = bar.resistance;
+
+        col.appendChild(fill);
+
+        // Show level label at phase transitions or every few bars
+        if (i === 0 || bars[i - 1].resistance !== bar.resistance) {
+            fill.appendChild(levelLabel);
+        }
+
+        wrap.appendChild(col);
+    });
+
+    // Minute markers below
+    const axis = document.createElement('div');
+    axis.className = 'preview-axis';
+    for (let m = 0; m <= totalMin; m += 5) {
+        const tick = document.createElement('span');
+        tick.className = 'preview-tick';
+        tick.style.left = (m / totalMin * 100) + '%';
+        tick.textContent = m + 'm';
+        axis.appendChild(tick);
+    }
+
+    container.appendChild(wrap);
+    container.appendChild(axis);
 }
 
 function startRide() {

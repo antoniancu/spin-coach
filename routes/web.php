@@ -33,5 +33,5 @@ Route::middleware('current-user')->group(function () {
     Route::get('/history/{id}', [DashboardController::class, 'show']);
     Route::get('/settings', fn () => view('settings'));
     Route::get('/spotify/connect', [SpotifyController::class, 'redirect']);
-    Route::get('/spotify/callback', [SpotifyController::class, 'callback']);
+    Route::get('/callback', [SpotifyController::class, 'callback']);
 });

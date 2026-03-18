@@ -138,5 +138,131 @@ const SpotifyUI = (() => {
         }
     }
 
-    return { init, play, pause, next, setVolume, startPolling, stopPolling, loadNowPlaying };
+    let miniPollInterval = null;
+    let isPlaying = false;
+
+    function initMiniPlayer(csrfToken) {
+        csrf = csrfToken;
+        fetch('/api/spotify/status', { headers: { 'Accept': 'application/json' } })
+            .then(r => r.json())
+            .then(res => {
+                if (res.data && res.data.connected) {
+                    refreshMiniPlayer();
+                    miniPollInterval = setInterval(refreshMiniPlayer, 10000);
+                }
+            })
+            .catch(() => {});
+    }
+
+    function refreshMiniPlayer() {
+        fetch('/api/spotify/now-playing', { headers: { 'Accept': 'application/json' } })
+            .then(r => r.json())
+            .then(res => {
+                const bar = document.getElementById('spotify-bar');
+                if (!bar) return;
+
+                bar.classList.remove('hidden');
+
+                const art = document.getElementById('sp-bar-art');
+                if (res.data && res.data.track) {
+                    document.getElementById('sp-bar-track').textContent = res.data.track.name;
+                    document.getElementById('sp-bar-artist').textContent = res.data.track.artist;
+                    if (art && res.data.track.album_art_url) {
+                        art.src = res.data.track.album_art_url;
+                        art.style.display = 'block';
+                    }
+                    isPlaying = res.data.is_playing;
+                } else {
+                    document.getElementById('sp-bar-track').textContent = 'Nothing playing';
+                    document.getElementById('sp-bar-artist').textContent = '';
+                    if (art) { art.style.display = 'none'; }
+                    isPlaying = false;
+                }
+
+                updatePlayPauseBtn();
+                updateEQ();
+            })
+            .catch(() => {});
+    }
+
+    function updateEQ() {
+        const eq = document.getElementById('sp-eq');
+        if (!eq) return;
+        eq.classList.toggle('playing', isPlaying);
+    }
+
+    function updatePlayPauseBtn() {
+        const btn = document.getElementById('sp-bar-playpause');
+        if (!btn) return;
+        btn.innerHTML = isPlaying ? '&#9646;&#9646;' : '&#9654;';
+        btn.onclick = isPlaying
+            ? () => pause().then(refreshMiniPlayer)
+            : () => play(null, localStorage.getItem('spotify_device_id')).then(refreshMiniPlayer);
+    }
+
+    function toggleDevicePopover() {
+        const popover = document.getElementById('sp-device-popover');
+        if (!popover) return;
+
+        if (popover.classList.contains('hidden')) {
+            popover.classList.remove('hidden');
+            loadDevicePopover();
+            // Close on outside click
+            setTimeout(() => {
+                document.addEventListener('click', closePopoverOutside);
+            }, 0);
+        } else {
+            closePopover();
+        }
+    }
+
+    function closePopover() {
+        const popover = document.getElementById('sp-device-popover');
+        if (popover) popover.classList.add('hidden');
+        document.removeEventListener('click', closePopoverOutside);
+    }
+
+    function closePopoverOutside(e) {
+        const wrap = document.querySelector('.sp-device-wrap');
+        if (wrap && !wrap.contains(e.target)) {
+            closePopover();
+        }
+    }
+
+    function loadDevicePopover() {
+        const list = document.getElementById('sp-device-popover-list');
+        if (!list) return;
+        list.innerHTML = '<div style="padding:8px;color:var(--text-secondary);font-size:13px;">Loading...</div>';
+
+        fetch('/api/spotify/devices', { headers: { 'Accept': 'application/json' } })
+            .then(r => r.json())
+            .then(res => {
+                list.innerHTML = '';
+                const devices = (res.data && res.data.devices) || [];
+                if (!devices.length) {
+                    list.innerHTML = '<div style="padding:8px;color:var(--text-secondary);font-size:13px;">No devices found</div>';
+                    return;
+                }
+                const savedId = localStorage.getItem('spotify_device_id');
+                devices.forEach(device => {
+                    const row = document.createElement('button');
+                    row.className = 'sp-device-row' + (device.is_active ? ' active' : '') + (device.id === savedId ? ' selected' : '');
+                    row.innerHTML = '<span>' + device.name + '</span><small>' + device.type + '</small>';
+                    row.onclick = () => {
+                        localStorage.setItem('spotify_device_id', device.id);
+                        // Transfer playback to this device
+                        if (isPlaying) {
+                            play(null, device.id).then(refreshMiniPlayer);
+                        }
+                        closePopover();
+                    };
+                    list.appendChild(row);
+                });
+            })
+            .catch(() => {
+                list.innerHTML = '<div style="padding:8px;color:var(--accent-hard);font-size:13px;">Failed to load devices</div>';
+            });
+    }
+
+    return { init, initMiniPlayer, refreshMiniPlayer, toggleDevicePopover, play, pause, next, setVolume, startPolling, stopPolling, loadNowPlaying };
 })();

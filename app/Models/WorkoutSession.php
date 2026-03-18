@@ -26,6 +26,7 @@ class WorkoutSession extends Model
         'calories_estimate',
         'distance_km_estimate',
         'spotify_playlist_uri',
+        'perceived_effort',
         'notes',
         'laps_completed',
         'total_virtual_distance_km',
@@ -42,6 +43,7 @@ class WorkoutSession extends Model
             'avg_cadence_rpm' => 'integer',
             'avg_heart_rate_bpm' => 'integer',
             'peak_heart_rate_bpm' => 'integer',
+            'perceived_effort' => 'integer',
             'calories_estimate' => 'integer',
             'distance_km_estimate' => 'float',
             'laps_completed' => 'integer',
@@ -67,5 +69,10 @@ class WorkoutSession extends Model
     public function intervals(): HasMany
     {
         return $this->hasMany(SessionInterval::class, 'session_id');
+    }
+
+    public function telemetry(): HasMany
+    {
+        return $this->hasMany(RideTelemetry::class, 'session_id');
     }
 }

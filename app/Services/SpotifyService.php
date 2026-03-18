@@ -86,6 +86,117 @@ class SpotifyService
         $this->request('PUT', '/me/player/volume' . $query);
     }
 
+    /**
+     * Get full now-playing state including track URI and progress.
+     */
+    public function getNowPlayingFull(): ?array
+    {
+        $response = $this->request('GET', '/me/player/currently-playing');
+
+        if (empty($response) || !isset($response['item'])) {
+            return null;
+        }
+
+        $item = $response['item'];
+        return [
+            'uri' => $item['uri'] ?? '',
+            'id' => $item['id'] ?? '',
+            'name' => $item['name'] ?? '',
+            'artist' => implode(', ', array_map(fn ($a) => $a['name'], $item['artists'] ?? [])),
+            'duration_ms' => $item['duration_ms'] ?? 0,
+            'progress_ms' => $response['progress_ms'] ?? 0,
+            'is_playing' => $response['is_playing'] ?? false,
+        ];
+    }
+
+    /**
+     * Get audio features (tempo/energy/etc) for up to 100 track IDs.
+     *
+     * @param  array<string>  $trackIds
+     * @return array<string, array{tempo: float, energy: float, danceability: float}>
+     */
+    public function getAudioFeatures(array $trackIds): array
+    {
+        if (empty($trackIds)) {
+            return [];
+        }
+
+        $chunks = array_chunk($trackIds, 100);
+        $result = [];
+
+        foreach ($chunks as $chunk) {
+            $response = $this->request('GET', '/audio-features?ids=' . implode(',', $chunk));
+            foreach ($response['audio_features'] ?? [] as $af) {
+                if ($af && isset($af['id'])) {
+                    $result[$af['id']] = [
+                        'tempo' => (float) ($af['tempo'] ?? 0),
+                        'energy' => (float) ($af['energy'] ?? 0),
+                        'danceability' => (float) ($af['danceability'] ?? 0),
+                    ];
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get recommendations from Spotify with target tempo.
+     *
+     * @param  array<string>  $seedTrackIds  Up to 5 seed track IDs
+     * @param  array<string>  $seedGenres    Up to 5 genre seeds
+     */
+    public function getRecommendations(
+        float $targetTempo,
+        array $seedTrackIds = [],
+        array $seedGenres = [],
+        float $minEnergy = 0.4,
+        int $limit = 20,
+    ): array {
+        $params = [
+            'limit' => $limit,
+            'target_tempo' => $targetTempo,
+            'min_tempo' => max(60, $targetTempo - 15),
+            'max_tempo' => min(200, $targetTempo + 15),
+            'min_energy' => $minEnergy,
+        ];
+
+        if (!empty($seedTrackIds)) {
+            $params['seed_tracks'] = implode(',', array_slice($seedTrackIds, 0, 5));
+        }
+        if (!empty($seedGenres)) {
+            $params['seed_genres'] = implode(',', array_slice($seedGenres, 0, 5));
+        }
+
+        // Must have at least one seed
+        if (empty($seedTrackIds) && empty($seedGenres)) {
+            $params['seed_genres'] = 'work-out,electronic,pop';
+        }
+
+        $query = '?' . http_build_query($params);
+        $response = $this->request('GET', '/recommendations' . $query);
+
+        return array_map(fn ($t) => [
+            'uri' => $t['uri'],
+            'id' => $t['id'],
+            'name' => $t['name'],
+            'artist' => implode(', ', array_map(fn ($a) => $a['name'], $t['artists'] ?? [])),
+            'duration_ms' => $t['duration_ms'] ?? 0,
+        ], $response['tracks'] ?? []);
+    }
+
+    /**
+     * Add a track to the user's playback queue.
+     */
+    public function queueTrack(string $trackUri, ?string $deviceId = null): void
+    {
+        $query = '?uri=' . urlencode($trackUri);
+        if ($deviceId) {
+            $query .= '&device_id=' . urlencode($deviceId);
+        }
+        $this->request('POST', '/me/player/queue' . $query);
+    }
+
     public function exchangeCode(string $code): SpotifyToken
     {
         $response = Http::asForm()->post(self::TOKEN_URL, [

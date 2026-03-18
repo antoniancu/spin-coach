@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\RideTelemetry;
 use App\Models\Workout;
 use App\Models\WorkoutSession;
 use Illuminate\Http\JsonResponse;
@@ -46,6 +47,7 @@ class WorkoutController extends Controller
                         'duration_min' => $workout->duration_min,
                         'intensity' => $workout->intensity,
                         'phase_count' => count($workout->phases),
+                        'phases' => $workout->phases,
                     ],
                     'error' => null,
                 ]);
@@ -107,7 +109,7 @@ class WorkoutController extends Controller
             'phase_type' => 'required|in:warmup,work,rest,cooldown',
             'target_rpm_low' => 'required|integer',
             'target_rpm_high' => 'required|integer',
-            'target_resistance' => 'required|integer|min:1|max:10',
+            'target_resistance' => 'required|integer|min:1|max:100',
             'duration_sec' => 'required|integer',
             'actual_duration_sec' => 'nullable|integer',
             'avg_cadence_rpm' => 'nullable|integer',
@@ -136,6 +138,7 @@ class WorkoutController extends Controller
             'peak_heart_rate_bpm' => 'nullable|integer',
             'calories_estimate' => 'nullable|integer',
             'distance_km_estimate' => 'nullable|numeric',
+            'perceived_effort' => 'nullable|integer|min:1|max:5',
             'notes' => 'nullable|string',
             'laps_completed' => 'nullable|integer',
             'total_virtual_distance_km' => 'nullable|numeric',
@@ -152,6 +155,40 @@ class WorkoutController extends Controller
             ],
             'error' => null,
         ]);
+    }
+
+    public function apiTelemetry(Request $request, int $sessionId): JsonResponse
+    {
+        $session = WorkoutSession::where('user_id', $request->user()->id)->findOrFail($sessionId);
+
+        $validated = $request->validate([
+            'points' => 'required|array|max:50',
+            'points.*.elapsed_sec' => 'required|integer|min:0',
+            'points.*.cadence_rpm' => 'nullable|integer|min:0|max:200',
+            'points.*.heart_rate_bpm' => 'nullable|integer|min:0|max:250',
+            'points.*.speed_kmh' => 'nullable|numeric|min:0|max:80',
+            'points.*.distance_km' => 'nullable|numeric|min:0',
+            'points.*.resistance_actual' => 'nullable|integer|min:0|max:100',
+            'points.*.resistance_target' => 'nullable|integer|min:0|max:100',
+            'points.*.phase_type' => 'nullable|string',
+        ]);
+
+        $rows = array_map(fn (array $pt) => [
+            'session_id' => $session->id,
+            'elapsed_sec' => $pt['elapsed_sec'],
+            'cadence_rpm' => $pt['cadence_rpm'] ?? null,
+            'heart_rate_bpm' => $pt['heart_rate_bpm'] ?? null,
+            'speed_kmh' => $pt['speed_kmh'] ?? null,
+            'distance_km' => $pt['distance_km'] ?? null,
+            'resistance_actual' => $pt['resistance_actual'] ?? null,
+            'resistance_target' => $pt['resistance_target'] ?? null,
+            'phase_type' => $pt['phase_type'] ?? null,
+            'recorded_at' => now(),
+        ], $validated['points']);
+
+        RideTelemetry::insert($rows);
+
+        return response()->json(['data' => ['count' => count($rows)], 'error' => null]);
     }
 
     public function apiSessionShow(Request $request, int $sessionId): JsonResponse

@@ -2,6 +2,9 @@ https://spin.norford.home {
     tls internal
     root * /srv/www/spin-coach/public
     encode gzip
+
+    reverse_proxy /ws/ble host.docker.internal:8765
+
     php_fastcgi php-fpm:9000
     file_server
 }

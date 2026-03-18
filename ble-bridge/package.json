@@ -1,0 +1,13 @@
+{
+  "name": "ble-bridge",
+  "version": "1.0.0",
+  "description": "BLE bridge for Bowflex C6 — relays cadence and heart rate to the PWA via WebSocket",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@abandonware/noble": "^1.9.2-15",
+    "ws": "^8.16.0"
+  }
+}

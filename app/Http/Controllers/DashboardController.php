@@ -70,4 +70,19 @@ class DashboardController extends Controller
             'error' => null,
         ]);
     }
+
+    public function apiDeleteSession(Request $request, int $sessionId): JsonResponse
+    {
+        $session = WorkoutSession::where('user_id', $request->user()->id)->findOrFail($sessionId);
+        $session->delete();
+
+        return response()->json(['data' => null, 'error' => null]);
+    }
+
+    public function apiDeleteAll(Request $request): JsonResponse
+    {
+        WorkoutSession::where('user_id', $request->user()->id)->delete();
+
+        return response()->json(['data' => null, 'error' => null]);
+    }
 }

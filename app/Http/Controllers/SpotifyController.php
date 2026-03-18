@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Services\DynamicDJService;
 use App\Services\SpotifyService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -14,6 +15,7 @@ class SpotifyController extends Controller
 {
     public function __construct(
         private readonly SpotifyService $spotify,
+        private readonly DynamicDJService $dj,
     ) {}
 
     // --- Web routes (OAuth) ---
@@ -135,6 +137,41 @@ class SpotifyController extends Controller
                 $request->input('device_id'),
             );
             return response()->json(['data' => null, 'error' => null]);
+        } catch (\RuntimeException $e) {
+            return response()->json(['data' => null, 'error' => $e->getMessage()], 503);
+        }
+    }
+
+    // --- Dynamic DJ ---
+
+    public function apiDJNext(Request $request): JsonResponse
+    {
+        $request->validate([
+            'session_id' => 'required|integer',
+            'cadence_rpm' => 'required|integer|min:0|max:200',
+            'heart_rate_bpm' => 'nullable|integer|min:0|max:250',
+            'device_id' => 'nullable|string',
+        ]);
+
+        try {
+            $result = $this->dj->queueNextTrack(
+                sessionId: (int) $request->input('session_id'),
+                cadenceRpm: (int) $request->input('cadence_rpm'),
+                heartRateBpm: $request->input('heart_rate_bpm') ? (int) $request->input('heart_rate_bpm') : null,
+                deviceId: $request->input('device_id'),
+            );
+
+            return response()->json(['data' => $result, 'error' => null]);
+        } catch (\RuntimeException $e) {
+            return response()->json(['data' => null, 'error' => $e->getMessage()], 503);
+        }
+    }
+
+    public function apiDJNowPlaying(): JsonResponse
+    {
+        try {
+            $track = $this->spotify->getNowPlayingFull();
+            return response()->json(['data' => $track, 'error' => null]);
         } catch (\RuntimeException $e) {
             return response()->json(['data' => null, 'error' => $e->getMessage()], 503);
         }

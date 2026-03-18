@@ -9,27 +9,99 @@
           "duration_min": 20,
           "sort_order": 1,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 85, "resistance": 3, "audio_cue": "Settle in, easy pace. Spin those legs loose." },
-            { "type": "work",     "label": "Steady ride",   "duration_sec": 900, "rpm_low": 80, "rpm_high": 92, "resistance": 4, "audio_cue": "Increase resistance one notch. Find your rhythm." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Wind it down. Nice work." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Settle in, easy pace. Spin those legs loose."
+            },
+            {
+              "type": "work",
+              "label": "Steady ride",
+              "duration_sec": 900,
+              "rpm_low": 80,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Increase resistance one notch. Find your rhythm."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Wind it down. Nice work."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 2,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 85, "resistance": 3, "audio_cue": "Settle in, easy pace. Spin those legs loose." },
-            { "type": "work",     "label": "Steady ride",   "duration_sec": 1500, "rpm_low": 80, "rpm_high": 92, "resistance": 4, "audio_cue": "Increase resistance one notch. Find your rhythm." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Wind it down. Nice work." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Settle in, easy pace. Spin those legs loose."
+            },
+            {
+              "type": "work",
+              "label": "Steady ride",
+              "duration_sec": 1500,
+              "rpm_low": 80,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Increase resistance one notch. Find your rhythm."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Wind it down. Nice work."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 3,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 85, "resistance": 3, "audio_cue": "Settle in, easy pace. Spin those legs loose." },
-            { "type": "work",     "label": "Steady ride",   "duration_sec": 2400, "rpm_low": 80, "rpm_high": 92, "resistance": 4, "audio_cue": "Increase resistance one notch. Find your rhythm." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Wind it down. Nice work." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Settle in, easy pace. Spin those legs loose."
+            },
+            {
+              "type": "work",
+              "label": "Steady ride",
+              "duration_sec": 2400,
+              "rpm_low": 80,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Increase resistance one notch. Find your rhythm."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Wind it down. Nice work."
+            }
           ]
         }
       ]
@@ -43,27 +115,99 @@
           "duration_min": 20,
           "sort_order": 4,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",         "duration_sec": 300, "rpm_low": 70, "rpm_high": 85, "resistance": 2, "audio_cue": "Easy start, keep resistance very light." },
-            { "type": "work",     "label": "High cadence spin","duration_sec": 900, "rpm_low": 90, "rpm_high": 105, "resistance": 2, "audio_cue": "Spin up the cadence. Light resistance, fast legs. Aim for 90 to 100 RPM." },
-            { "type": "cooldown", "label": "Cool down",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Ease off. Let the legs come back down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 85,
+              "resistance": 10,
+              "audio_cue": "Easy start, keep resistance very light."
+            },
+            {
+              "type": "work",
+              "label": "High cadence spin",
+              "duration_sec": 900,
+              "rpm_low": 90,
+              "rpm_high": 105,
+              "resistance": 10,
+              "audio_cue": "Spin up the cadence. Light resistance, fast legs. Aim for 90 to 100 RPM."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Ease off. Let the legs come back down."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 5,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",         "duration_sec": 300, "rpm_low": 70, "rpm_high": 85, "resistance": 2, "audio_cue": "Easy start, keep resistance very light." },
-            { "type": "work",     "label": "High cadence spin","duration_sec": 1500, "rpm_low": 90, "rpm_high": 105, "resistance": 2, "audio_cue": "Spin up the cadence. Light resistance, fast legs. Aim for 90 to 100 RPM." },
-            { "type": "cooldown", "label": "Cool down",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Ease off. Let the legs come back down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 85,
+              "resistance": 10,
+              "audio_cue": "Easy start, keep resistance very light."
+            },
+            {
+              "type": "work",
+              "label": "High cadence spin",
+              "duration_sec": 1500,
+              "rpm_low": 90,
+              "rpm_high": 105,
+              "resistance": 10,
+              "audio_cue": "Spin up the cadence. Light resistance, fast legs. Aim for 90 to 100 RPM."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Ease off. Let the legs come back down."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 6,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",         "duration_sec": 300, "rpm_low": 70, "rpm_high": 85, "resistance": 2, "audio_cue": "Easy start, keep resistance very light." },
-            { "type": "work",     "label": "High cadence spin","duration_sec": 2400, "rpm_low": 90, "rpm_high": 105, "resistance": 2, "audio_cue": "Spin up the cadence. Light resistance, fast legs. Aim for 90 to 100 RPM." },
-            { "type": "cooldown", "label": "Cool down",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Ease off. Let the legs come back down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 85,
+              "resistance": 10,
+              "audio_cue": "Easy start, keep resistance very light."
+            },
+            {
+              "type": "work",
+              "label": "High cadence spin",
+              "duration_sec": 2400,
+              "rpm_low": 90,
+              "rpm_high": 105,
+              "resistance": 10,
+              "audio_cue": "Spin up the cadence. Light resistance, fast legs. Aim for 90 to 100 RPM."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Ease off. Let the legs come back down."
+            }
           ]
         }
       ]
@@ -77,39 +221,207 @@
           "duration_min": 20,
           "sort_order": 7,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 82, "resistance": 3, "audio_cue": "Easy warm up. Get comfortable." },
-            { "type": "work",     "label": "Low cadence",   "duration_sec": 240, "rpm_low": 58, "rpm_high": 65, "resistance": 4, "audio_cue": "Drop your cadence. Slow and powerful." },
-            { "type": "rest",     "label": "High cadence",  "duration_sec": 240, "rpm_low": 90, "rpm_high": 100, "resistance": 3, "audio_cue": "Now spin it up. Fast and light." },
-            { "type": "work",     "label": "Low cadence",   "duration_sec": 240, "rpm_low": 58, "rpm_high": 65, "resistance": 4, "audio_cue": "Back to slow power." },
-            { "type": "rest",     "label": "High cadence",  "duration_sec": 120, "rpm_low": 90, "rpm_high": 100, "resistance": 3, "audio_cue": "Spin it out." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Wind it down. Well done." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Easy warm up. Get comfortable."
+            },
+            {
+              "type": "work",
+              "label": "Low cadence",
+              "duration_sec": 240,
+              "rpm_low": 58,
+              "rpm_high": 65,
+              "resistance": 18,
+              "audio_cue": "Drop your cadence. Slow and powerful."
+            },
+            {
+              "type": "rest",
+              "label": "High cadence",
+              "duration_sec": 240,
+              "rpm_low": 90,
+              "rpm_high": 100,
+              "resistance": 15,
+              "audio_cue": "Now spin it up. Fast and light."
+            },
+            {
+              "type": "work",
+              "label": "Low cadence",
+              "duration_sec": 240,
+              "rpm_low": 58,
+              "rpm_high": 65,
+              "resistance": 18,
+              "audio_cue": "Back to slow power."
+            },
+            {
+              "type": "rest",
+              "label": "High cadence",
+              "duration_sec": 120,
+              "rpm_low": 90,
+              "rpm_high": 100,
+              "resistance": 15,
+              "audio_cue": "Spin it out."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Wind it down. Well done."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 8,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 82, "resistance": 3, "audio_cue": "Easy warm up. Get comfortable." },
-            { "type": "work",     "label": "Low cadence",   "duration_sec": 300, "rpm_low": 58, "rpm_high": 65, "resistance": 4, "audio_cue": "Drop your cadence. Slow and powerful." },
-            { "type": "rest",     "label": "High cadence",  "duration_sec": 300, "rpm_low": 90, "rpm_high": 100, "resistance": 3, "audio_cue": "Spin it up. Fast and light." },
-            { "type": "work",     "label": "Low cadence",   "duration_sec": 300, "rpm_low": 58, "rpm_high": 65, "resistance": 4, "audio_cue": "Back to slow power." },
-            { "type": "rest",     "label": "High cadence",  "duration_sec": 300, "rpm_low": 90, "rpm_high": 100, "resistance": 3, "audio_cue": "Spin again." },
-            { "type": "work",     "label": "Low cadence",   "duration_sec": 300, "rpm_low": 58, "rpm_high": 65, "resistance": 4, "audio_cue": "One more strength block." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Wind it down. Well done." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Easy warm up. Get comfortable."
+            },
+            {
+              "type": "work",
+              "label": "Low cadence",
+              "duration_sec": 300,
+              "rpm_low": 58,
+              "rpm_high": 65,
+              "resistance": 18,
+              "audio_cue": "Drop your cadence. Slow and powerful."
+            },
+            {
+              "type": "rest",
+              "label": "High cadence",
+              "duration_sec": 300,
+              "rpm_low": 90,
+              "rpm_high": 100,
+              "resistance": 15,
+              "audio_cue": "Spin it up. Fast and light."
+            },
+            {
+              "type": "work",
+              "label": "Low cadence",
+              "duration_sec": 300,
+              "rpm_low": 58,
+              "rpm_high": 65,
+              "resistance": 18,
+              "audio_cue": "Back to slow power."
+            },
+            {
+              "type": "rest",
+              "label": "High cadence",
+              "duration_sec": 300,
+              "rpm_low": 90,
+              "rpm_high": 100,
+              "resistance": 15,
+              "audio_cue": "Spin again."
+            },
+            {
+              "type": "work",
+              "label": "Low cadence",
+              "duration_sec": 300,
+              "rpm_low": 58,
+              "rpm_high": 65,
+              "resistance": 18,
+              "audio_cue": "One more strength block."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Wind it down. Well done."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 9,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 70, "rpm_high": 82, "resistance": 3, "audio_cue": "Easy warm up. Get comfortable." },
-            { "type": "work",     "label": "Low cadence",   "duration_sec": 360, "rpm_low": 58, "rpm_high": 65, "resistance": 4, "audio_cue": "Drop your cadence. Slow and powerful." },
-            { "type": "rest",     "label": "High cadence",  "duration_sec": 360, "rpm_low": 90, "rpm_high": 100, "resistance": 3, "audio_cue": "Spin it up." },
-            { "type": "work",     "label": "Low cadence",   "duration_sec": 360, "rpm_low": 58, "rpm_high": 65, "resistance": 4, "audio_cue": "Back to slow power." },
-            { "type": "rest",     "label": "High cadence",  "duration_sec": 360, "rpm_low": 90, "rpm_high": 100, "resistance": 3, "audio_cue": "Fast legs again." },
-            { "type": "work",     "label": "Low cadence",   "duration_sec": 360, "rpm_low": 58, "rpm_high": 65, "resistance": 4, "audio_cue": "Final strength block." },
-            { "type": "rest",     "label": "High cadence",  "duration_sec": 360, "rpm_low": 90, "rpm_high": 100, "resistance": 3, "audio_cue": "Last spin set." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Wind it down. Great session." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Easy warm up. Get comfortable."
+            },
+            {
+              "type": "work",
+              "label": "Low cadence",
+              "duration_sec": 360,
+              "rpm_low": 58,
+              "rpm_high": 65,
+              "resistance": 18,
+              "audio_cue": "Drop your cadence. Slow and powerful."
+            },
+            {
+              "type": "rest",
+              "label": "High cadence",
+              "duration_sec": 360,
+              "rpm_low": 90,
+              "rpm_high": 100,
+              "resistance": 15,
+              "audio_cue": "Spin it up."
+            },
+            {
+              "type": "work",
+              "label": "Low cadence",
+              "duration_sec": 360,
+              "rpm_low": 58,
+              "rpm_high": 65,
+              "resistance": 18,
+              "audio_cue": "Back to slow power."
+            },
+            {
+              "type": "rest",
+              "label": "High cadence",
+              "duration_sec": 360,
+              "rpm_low": 90,
+              "rpm_high": 100,
+              "resistance": 15,
+              "audio_cue": "Fast legs again."
+            },
+            {
+              "type": "work",
+              "label": "Low cadence",
+              "duration_sec": 360,
+              "rpm_low": 58,
+              "rpm_high": 65,
+              "resistance": 18,
+              "audio_cue": "Final strength block."
+            },
+            {
+              "type": "rest",
+              "label": "High cadence",
+              "duration_sec": 360,
+              "rpm_low": 90,
+              "rpm_high": 100,
+              "resistance": 15,
+              "audio_cue": "Last spin set."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Wind it down. Great session."
+            }
           ]
         }
       ]
@@ -123,37 +435,189 @@
           "duration_min": 20,
           "sort_order": 10,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 75, "rpm_high": 88, "resistance": 4, "audio_cue": "Build into it. Smooth warm up." },
-            { "type": "work",     "label": "Tempo effort",  "duration_sec": 420, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Increase resistance to six. Push the pace — this should feel hard but sustainable." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 120, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Back off. Active recovery. Keep spinning." },
-            { "type": "work",     "label": "Tempo effort",  "duration_sec": 180, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Back on it. Resistance to six." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "Bring it down. Legs should feel that." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 88,
+              "resistance": 18,
+              "audio_cue": "Build into it. Smooth warm up."
+            },
+            {
+              "type": "work",
+              "label": "Tempo effort",
+              "duration_sec": 420,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Increase resistance 22. Push the pace — this should feel hard but sustainable."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 120,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Back off. Active recovery. Keep spinning."
+            },
+            {
+              "type": "work",
+              "label": "Tempo effort",
+              "duration_sec": 180,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Back on it. Resistance 22."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "Bring it down. Legs should feel that."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 11,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 75, "rpm_high": 88, "resistance": 4, "audio_cue": "Build into it. Smooth warm up." },
-            { "type": "work",     "label": "Tempo effort 1","duration_sec": 480, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Resistance to six. Settle into tempo pace." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 180, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Back off. Recover." },
-            { "type": "work",     "label": "Tempo effort 2","duration_sec": 480, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Back on it. Same effort." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 120, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Short recovery. Keep it moving." },
-            { "type": "work",     "label": "Tempo effort 3","duration_sec": 240, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Final tempo block. Give it everything." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "Well earned cool down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 88,
+              "resistance": 18,
+              "audio_cue": "Build into it. Smooth warm up."
+            },
+            {
+              "type": "work",
+              "label": "Tempo effort 1",
+              "duration_sec": 480,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Resistance 22. Settle into tempo pace."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 180,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Back off. Recover."
+            },
+            {
+              "type": "work",
+              "label": "Tempo effort 2",
+              "duration_sec": 480,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Back on it. Same effort."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 120,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Short recovery. Keep it moving."
+            },
+            {
+              "type": "work",
+              "label": "Tempo effort 3",
+              "duration_sec": 240,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Final tempo block. Give it everything."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "Well earned cool down."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 12,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 75, "rpm_high": 88, "resistance": 4, "audio_cue": "Build into it. Smooth warm up." },
-            { "type": "work",     "label": "Tempo effort 1","duration_sec": 600, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Resistance to six. Ten minutes of tempo." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 300, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Five minutes recovery. Flush the legs." },
-            { "type": "work",     "label": "Tempo effort 2","duration_sec": 600, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Back on it. Ten more minutes." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 300, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Recover. You earned it." },
-            { "type": "work",     "label": "Tempo effort 3","duration_sec": 300, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Last five. Dig in." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "Brilliant session. Wind it down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 88,
+              "resistance": 18,
+              "audio_cue": "Build into it. Smooth warm up."
+            },
+            {
+              "type": "work",
+              "label": "Tempo effort 1",
+              "duration_sec": 600,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Resistance 22. Ten minutes of tempo."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Five minutes recovery. Flush the legs."
+            },
+            {
+              "type": "work",
+              "label": "Tempo effort 2",
+              "duration_sec": 600,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Back on it. Ten more minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Recover. You earned it."
+            },
+            {
+              "type": "work",
+              "label": "Tempo effort 3",
+              "duration_sec": 300,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Last five. Dig in."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "Brilliant session. Wind it down."
+            }
           ]
         }
       ]
@@ -167,32 +631,144 @@
           "duration_min": 20,
           "sort_order": 13,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 78, "rpm_high": 90, "resistance": 4, "audio_cue": "Gradual warm up. Let the body come alive." },
-            { "type": "work",     "label": "Sweet spot",    "duration_sec": 900, "rpm_low": 90, "rpm_high": 98, "resistance": 6, "audio_cue": "Resistance to six. This is sweet spot — hard but controlled. You can hold this." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "Ease right off. Spin the legs out." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 90,
+              "resistance": 18,
+              "audio_cue": "Gradual warm up. Let the body come alive."
+            },
+            {
+              "type": "work",
+              "label": "Sweet spot",
+              "duration_sec": 900,
+              "rpm_low": 90,
+              "rpm_high": 98,
+              "resistance": 22,
+              "audio_cue": "Resistance 22. This is sweet spot — hard but controlled. You can hold this."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "Ease right off. Spin the legs out."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 14,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 78, "rpm_high": 90, "resistance": 4, "audio_cue": "Gradual warm up." },
-            { "type": "work",     "label": "Sweet spot 1",  "duration_sec": 960, "rpm_low": 90, "rpm_high": 98, "resistance": 6, "audio_cue": "Resistance six. Sweet spot. Settle in for sixteen minutes." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 240, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Back off. Four minutes recovery." },
-            { "type": "work",     "label": "Sweet spot 2",  "duration_sec": 600, "rpm_low": 90, "rpm_high": 98, "resistance": 6, "audio_cue": "Final ten minutes. Same effort." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "Excellent. Wind it down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 90,
+              "resistance": 18,
+              "audio_cue": "Gradual warm up."
+            },
+            {
+              "type": "work",
+              "label": "Sweet spot 1",
+              "duration_sec": 960,
+              "rpm_low": 90,
+              "rpm_high": 98,
+              "resistance": 22,
+              "audio_cue": "Resistance 22. Sweet spot. Settle in for sixteen minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 240,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Back off. Four minutes recovery."
+            },
+            {
+              "type": "work",
+              "label": "Sweet spot 2",
+              "duration_sec": 600,
+              "rpm_low": 90,
+              "rpm_high": 98,
+              "resistance": 22,
+              "audio_cue": "Final ten minutes. Same effort."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "Excellent. Wind it down."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 15,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 78, "rpm_high": 90, "resistance": 4, "audio_cue": "Gradual warm up." },
-            { "type": "work",     "label": "Sweet spot 1",  "duration_sec": 960, "rpm_low": 90, "rpm_high": 98, "resistance": 6, "audio_cue": "Resistance six. First sweet spot block — sixteen minutes." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 300, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Five minutes off. Breathe." },
-            { "type": "work",     "label": "Sweet spot 2",  "duration_sec": 960, "rpm_low": 90, "rpm_high": 98, "resistance": 6, "audio_cue": "Second block. Same pace. You've got this." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 180, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Short recovery." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "That was a serious session. Wind it right down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 90,
+              "resistance": 18,
+              "audio_cue": "Gradual warm up."
+            },
+            {
+              "type": "work",
+              "label": "Sweet spot 1",
+              "duration_sec": 960,
+              "rpm_low": 90,
+              "rpm_high": 98,
+              "resistance": 22,
+              "audio_cue": "Resistance 22. First sweet spot block — sixteen minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Five minutes off. Breathe."
+            },
+            {
+              "type": "work",
+              "label": "Sweet spot 2",
+              "duration_sec": 960,
+              "rpm_low": 90,
+              "rpm_high": 98,
+              "resistance": 22,
+              "audio_cue": "Second block. Same pace. You've got this."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 180,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Short recovery."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "That was a serious session. Wind it right down."
+            }
           ]
         }
       ]
@@ -206,51 +782,315 @@
           "duration_min": 20,
           "sort_order": 16,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",   "duration_sec": 300, "rpm_low": 75, "rpm_high": 88, "resistance": 4, "audio_cue": "Easy warm up." },
-            { "type": "work",     "label": "2 min push","duration_sec": 120, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "First step. Resistance six, two minutes." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 60,  "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "One minute off." },
-            { "type": "work",     "label": "4 min push","duration_sec": 240, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Step up. Four minutes." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 90,  "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Recover." },
-            { "type": "work",     "label": "2 min push","duration_sec": 120, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Back down the pyramid. Two more minutes." },
-            { "type": "cooldown", "label": "Cool down", "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "Pyramid complete. Cool down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 88,
+              "resistance": 18,
+              "audio_cue": "Easy warm up."
+            },
+            {
+              "type": "work",
+              "label": "2 min push",
+              "duration_sec": 120,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "First step. Resistance 22, two minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 60,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "One minute off."
+            },
+            {
+              "type": "work",
+              "label": "4 min push",
+              "duration_sec": 240,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Step up. Four minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Recover."
+            },
+            {
+              "type": "work",
+              "label": "2 min push",
+              "duration_sec": 120,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Back down the pyramid. Two more minutes."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "Pyramid complete. Cool down."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 17,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",   "duration_sec": 300, "rpm_low": 75, "rpm_high": 88, "resistance": 4, "audio_cue": "Easy warm up." },
-            { "type": "work",     "label": "2 min push","duration_sec": 120, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Step one. Two minutes." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 90,  "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Recover." },
-            { "type": "work",     "label": "4 min push","duration_sec": 240, "rpm_low": 88, "rpm_high": 96, "resistance": 7, "audio_cue": "Step up. Four minutes. Resistance seven." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 120, "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Recover." },
-            { "type": "work",     "label": "6 min push","duration_sec": 360, "rpm_low": 88, "rpm_high": 96, "resistance": 7, "audio_cue": "Top of the pyramid. Six minutes. Hold it." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 120, "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Coming back down." },
-            { "type": "work",     "label": "4 min push","duration_sec": 240, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Four minutes, resistance six." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 90,  "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Almost there." },
-            { "type": "work",     "label": "2 min push","duration_sec": 120, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Last step. Two minutes." },
-            { "type": "cooldown", "label": "Cool down", "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "Pyramid done. Excellent work." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 88,
+              "resistance": 18,
+              "audio_cue": "Easy warm up."
+            },
+            {
+              "type": "work",
+              "label": "2 min push",
+              "duration_sec": 120,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Step one. Two minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Recover."
+            },
+            {
+              "type": "work",
+              "label": "4 min push",
+              "duration_sec": 240,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 25,
+              "audio_cue": "Step up. Four minutes. Resistance 25."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 120,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Recover."
+            },
+            {
+              "type": "work",
+              "label": "6 min push",
+              "duration_sec": 360,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 25,
+              "audio_cue": "Top of the pyramid. Six minutes. Hold it."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 120,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Coming back down."
+            },
+            {
+              "type": "work",
+              "label": "4 min push",
+              "duration_sec": 240,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Four minutes, resistance 22."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Almost there."
+            },
+            {
+              "type": "work",
+              "label": "2 min push",
+              "duration_sec": 120,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Last step. Two minutes."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "Pyramid done. Excellent work."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 18,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",    "duration_sec": 300, "rpm_low": 75, "rpm_high": 88, "resistance": 4, "audio_cue": "Easy warm up." },
-            { "type": "work",     "label": "2 min push", "duration_sec": 120, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Step one. Two minutes." },
-            { "type": "rest",     "label": "Recovery",   "duration_sec": 90,  "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Recover." },
-            { "type": "work",     "label": "4 min push", "duration_sec": 240, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Step two. Four minutes." },
-            { "type": "rest",     "label": "Recovery",   "duration_sec": 120, "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Recover." },
-            { "type": "work",     "label": "6 min push", "duration_sec": 360, "rpm_low": 88, "rpm_high": 96, "resistance": 7, "audio_cue": "Six minutes. Resistance seven." },
-            { "type": "rest",     "label": "Recovery",   "duration_sec": 150, "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Well earned recovery." },
-            { "type": "work",     "label": "8 min push", "duration_sec": 480, "rpm_low": 88, "rpm_high": 96, "resistance": 7, "audio_cue": "Peak of the pyramid. Eight minutes. Dig in." },
-            { "type": "rest",     "label": "Recovery",   "duration_sec": 150, "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Coming down now." },
-            { "type": "work",     "label": "6 min push", "duration_sec": 360, "rpm_low": 88, "rpm_high": 96, "resistance": 7, "audio_cue": "Six minutes back down." },
-            { "type": "rest",     "label": "Recovery",   "duration_sec": 120, "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Keep it moving." },
-            { "type": "work",     "label": "4 min push", "duration_sec": 240, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Four minutes." },
-            { "type": "rest",     "label": "Recovery",   "duration_sec": 90,  "rpm_low": 78, "rpm_high": 86, "resistance": 3, "audio_cue": "Almost done." },
-            { "type": "work",     "label": "2 min push", "duration_sec": 120, "rpm_low": 88, "rpm_high": 96, "resistance": 6, "audio_cue": "Final two. Empty the tank." },
-            { "type": "cooldown", "label": "Cool down",  "duration_sec": 300, "rpm_low": 68, "rpm_high": 80, "resistance": 3, "audio_cue": "That was a big pyramid. Wind it all the way down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 88,
+              "resistance": 18,
+              "audio_cue": "Easy warm up."
+            },
+            {
+              "type": "work",
+              "label": "2 min push",
+              "duration_sec": 120,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Step one. Two minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Recover."
+            },
+            {
+              "type": "work",
+              "label": "4 min push",
+              "duration_sec": 240,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Step two. Four minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 120,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Recover."
+            },
+            {
+              "type": "work",
+              "label": "6 min push",
+              "duration_sec": 360,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 25,
+              "audio_cue": "Six minutes. Resistance 25."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 150,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Well earned recovery."
+            },
+            {
+              "type": "work",
+              "label": "8 min push",
+              "duration_sec": 480,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 25,
+              "audio_cue": "Peak of the pyramid. Eight minutes. Dig in."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 150,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Coming down now."
+            },
+            {
+              "type": "work",
+              "label": "6 min push",
+              "duration_sec": 360,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 25,
+              "audio_cue": "Six minutes back down."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 120,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Keep it moving."
+            },
+            {
+              "type": "work",
+              "label": "4 min push",
+              "duration_sec": 240,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Four minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 78,
+              "rpm_high": 86,
+              "resistance": 15,
+              "audio_cue": "Almost done."
+            },
+            {
+              "type": "work",
+              "label": "2 min push",
+              "duration_sec": 120,
+              "rpm_low": 88,
+              "rpm_high": 96,
+              "resistance": 22,
+              "audio_cue": "Final two. Empty the tank."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 68,
+              "rpm_high": 80,
+              "resistance": 15,
+              "audio_cue": "That was a big pyramid. Wind it all the way down."
+            }
           ]
         }
       ]
@@ -264,57 +1104,369 @@
           "duration_min": 20,
           "sort_order": 19,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",        "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Build up. Get ready for hard work." },
-            { "type": "work",     "label": "Sprint",         "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "GO. Resistance eight. Maximum effort." },
-            { "type": "rest",     "label": "Full recovery",  "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Back right off. Full recovery." },
-            { "type": "work",     "label": "Sprint",         "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "GO again. Same effort." },
-            { "type": "rest",     "label": "Full recovery",  "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Recover. Breathe." },
-            { "type": "work",     "label": "Sprint",         "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Third sprint. Everything you've got." },
-            { "type": "rest",     "label": "Full recovery",  "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Easy spin." },
-            { "type": "work",     "label": "Sprint",         "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Last one. Leave nothing behind." },
-            { "type": "cooldown", "label": "Cool down",      "duration_sec": 300, "rpm_low": 65, "rpm_high": 80, "resistance": 2, "audio_cue": "That was hard. Spin the legs right out." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Build up. Get ready for hard work."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "GO. Resistance 30. Maximum effort."
+            },
+            {
+              "type": "rest",
+              "label": "Full recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Back right off. Full recovery."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "GO again. Same effort."
+            },
+            {
+              "type": "rest",
+              "label": "Full recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Recover. Breathe."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Third sprint. Everything you've got."
+            },
+            {
+              "type": "rest",
+              "label": "Full recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Easy spin."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Last one. Leave nothing behind."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "That was hard. Spin the legs right out."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 20,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Build up gradually. Big effort coming." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint one. GO." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Full recovery." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint two. GO." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Easy spin." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint three." },
-            { "type": "rest",     "label": "Rest set",      "duration_sec": 360, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Six minute rest set. Keep spinning light." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Set two. Sprint four. GO." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Recover." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint five. Hard." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Almost there." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Last sprint. Empty it." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 65, "rpm_high": 80, "resistance": 2, "audio_cue": "Outstanding. Spin it all the way down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Build up gradually. Big effort coming."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint one. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Full recovery."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint two. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Easy spin."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint three."
+            },
+            {
+              "type": "rest",
+              "label": "Rest set",
+              "duration_sec": 360,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Six minute rest set. Keep spinning light."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Set two. Sprint four. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Recover."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint five. Hard."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Almost there."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Last sprint. Empty it."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Outstanding. Spin it all the way down."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 21,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",       "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Long warm up. Prepare the legs." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Set one. Sprint one. GO." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Full recovery." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint two." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Recover." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint three." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Good. Recover." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint four." },
-            { "type": "rest",     "label": "Rest set",      "duration_sec": 360, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Six minutes easy. Refuel." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Set two begins. Sprint five. GO." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Recover fully." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint six." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "Almost through it." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Sprint seven. Hard." },
-            { "type": "rest",     "label": "Recovery",      "duration_sec": 90,  "rpm_low": 70, "rpm_high": 82, "resistance": 2, "audio_cue": "One more." },
-            { "type": "work",     "label": "Sprint",        "duration_sec": 60,  "rpm_low": 95, "rpm_high": 115, "resistance": 8, "audio_cue": "Final sprint. Everything left." },
-            { "type": "cooldown", "label": "Cool down",     "duration_sec": 300, "rpm_low": 65, "rpm_high": 80, "resistance": 2, "audio_cue": "That was world class. Spin it all out." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Long warm up. Prepare the legs."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Set one. Sprint one. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Full recovery."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint two."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Recover."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint three."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Good. Recover."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint four."
+            },
+            {
+              "type": "rest",
+              "label": "Rest set",
+              "duration_sec": 360,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Six minutes easy. Refuel."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Set two begins. Sprint five. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Recover fully."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint six."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "Almost through it."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Sprint seven. Hard."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 90,
+              "rpm_low": 70,
+              "rpm_high": 82,
+              "resistance": 10,
+              "audio_cue": "One more."
+            },
+            {
+              "type": "work",
+              "label": "Sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Final sprint. Everything left."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "That was world class. Spin it all out."
+            }
           ]
         }
       ]
@@ -328,39 +1480,207 @@
           "duration_min": 20,
           "sort_order": 22,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",      "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Warm up well. You'll need it." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 120, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "GO. Resistance eight. Two minutes hard." },
-            { "type": "rest",     "label": "Recovery",     "duration_sec": 300, "rpm_low": 72, "rpm_high": 82, "resistance": 3, "audio_cue": "Five minutes recovery. Come right down." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 120, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "GO again. Same intensity." },
-            { "type": "cooldown", "label": "Cool down",    "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Done. Spin the legs out completely." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Warm up well. You'll need it."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 120,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "GO. Resistance 30. Two minutes hard."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 72,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Five minutes recovery. Come right down."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 120,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "GO again. Same intensity."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Done. Spin the legs out completely."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 23,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",      "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Warm up well." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 120, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "Interval one. GO. Resistance eight." },
-            { "type": "rest",     "label": "Recovery",     "duration_sec": 300, "rpm_low": 72, "rpm_high": 82, "resistance": 3, "audio_cue": "Five minutes recovery." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 120, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "Interval two. GO." },
-            { "type": "rest",     "label": "Recovery",     "duration_sec": 300, "rpm_low": 72, "rpm_high": 82, "resistance": 3, "audio_cue": "Recovery. Breathe." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 120, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "Interval three. Last one. GO." },
-            { "type": "cooldown", "label": "Cool down",    "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Three done. Excellent. Cool down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Warm up well."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 120,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "Interval one. GO. Resistance 30."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 72,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Five minutes recovery."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 120,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "Interval two. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 72,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Recovery. Breathe."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 120,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "Interval three. Last one. GO."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Three done. Excellent. Cool down."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 24,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",      "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Long warm up for a hard session." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 180, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "Interval one. Three minutes. GO." },
-            { "type": "rest",     "label": "Recovery",     "duration_sec": 300, "rpm_low": 72, "rpm_high": 82, "resistance": 3, "audio_cue": "Five minutes recovery." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 180, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "Interval two. Match the effort." },
-            { "type": "rest",     "label": "Recovery",     "duration_sec": 300, "rpm_low": 72, "rpm_high": 82, "resistance": 3, "audio_cue": "Recover fully." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 180, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "Interval three. Three minutes." },
-            { "type": "rest",     "label": "Recovery",     "duration_sec": 300, "rpm_low": 72, "rpm_high": 82, "resistance": 3, "audio_cue": "Good. Keep spinning." },
-            { "type": "work",     "label": "Hard interval","duration_sec": 180, "rpm_low": 90, "rpm_high": 102, "resistance": 8, "audio_cue": "Last interval. Final three minutes. Leave it all here." },
-            { "type": "cooldown", "label": "Cool down",    "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Four done. That was a serious session. Wind down." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Long warm up for a hard session."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 180,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "Interval one. Three minutes. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 72,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Five minutes recovery."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 180,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "Interval two. Match the effort."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 72,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Recover fully."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 180,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "Interval three. Three minutes."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 300,
+              "rpm_low": 72,
+              "rpm_high": 82,
+              "resistance": 15,
+              "audio_cue": "Good. Keep spinning."
+            },
+            {
+              "type": "work",
+              "label": "Hard interval",
+              "duration_sec": 180,
+              "rpm_low": 90,
+              "rpm_high": 102,
+              "resistance": 30,
+              "audio_cue": "Last interval. Final three minutes. Leave it all here."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Four done. That was a serious session. Wind down."
+            }
           ]
         }
       ]
@@ -374,81 +1694,585 @@
           "duration_min": 20,
           "sort_order": 25,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",  "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Build up steady. Ladder coming." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Thirty seconds. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 30,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Thirty seconds off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five seconds. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Forty-five off." },
-            { "type": "work",     "label": "60s sprint","duration_sec": 60,  "rpm_low": 95, "rpm_high": 108, "resistance": 8, "audio_cue": "Top of the ladder. Sixty seconds. Everything." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 60,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Sixty seconds recovery. Coming back down." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five down. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Last step. Thirty seconds. Finish strong." },
-            { "type": "cooldown", "label": "Cool down", "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Ladder complete. Spin it out." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Build up steady. Ladder coming."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Thirty seconds. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 30,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Thirty seconds off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five seconds. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Forty-five off."
+            },
+            {
+              "type": "work",
+              "label": "60s sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 108,
+              "resistance": 30,
+              "audio_cue": "Top of the ladder. Sixty seconds. Everything."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 60,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Sixty seconds recovery. Coming back down."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five down. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Last step. Thirty seconds. Finish strong."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Ladder complete. Spin it out."
+            }
           ]
         },
         {
           "duration_min": 30,
           "sort_order": 26,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",  "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Build up steady." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Ladder one. Thirty. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 30,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "60s sprint","duration_sec": 60,  "rpm_low": 95, "rpm_high": 108, "resistance": 8, "audio_cue": "Sixty. Top. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 60,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Sixty off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Thirty. Finish the ladder." },
-            { "type": "rest",     "label": "Rest set",  "duration_sec": 300, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Five minutes recovery before ladder two." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Ladder two. Thirty. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 30,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "60s sprint","duration_sec": 60,  "rpm_low": 95, "rpm_high": 108, "resistance": 8, "audio_cue": "Top again. Sixty. Maximum." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 60,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off. Coming down." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five. Hold the power." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Last sprint ever. GO." },
-            { "type": "cooldown", "label": "Cool down", "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Two ladders done. Incredible. Spin it all the way out." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Build up steady."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Ladder one. Thirty. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 30,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "60s sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 108,
+              "resistance": 30,
+              "audio_cue": "Sixty. Top. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 60,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Sixty off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Thirty. Finish the ladder."
+            },
+            {
+              "type": "rest",
+              "label": "Rest set",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Five minutes recovery before ladder two."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Ladder two. Thirty. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 30,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "60s sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 108,
+              "resistance": 30,
+              "audio_cue": "Top again. Sixty. Maximum."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 60,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off. Coming down."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five. Hold the power."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Last sprint ever. GO."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Two ladders done. Incredible. Spin it all the way out."
+            }
           ]
         },
         {
           "duration_min": 45,
           "sort_order": 27,
           "phases": [
-            { "type": "warmup",   "label": "Warm up",  "duration_sec": 300, "rpm_low": 78, "rpm_high": 92, "resistance": 4, "audio_cue": "Full warm up. Three ladders ahead." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Ladder one. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 30,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "60s sprint","duration_sec": 60,  "rpm_low": 95, "rpm_high": 108, "resistance": 8, "audio_cue": "Sixty. Top. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 60,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five down." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Thirty. Ladder one done." },
-            { "type": "rest",     "label": "Rest set",  "duration_sec": 300, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Five minutes. Ladder two coming." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Ladder two. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 30,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "60s sprint","duration_sec": 60,  "rpm_low": 95, "rpm_high": 108, "resistance": 8, "audio_cue": "Top again. Everything." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 60,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Ladder two done. Thirty." },
-            { "type": "rest",     "label": "Rest set",  "duration_sec": 300, "rpm_low": 75, "rpm_high": 85, "resistance": 3, "audio_cue": "Five minutes. Final ladder." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Last ladder. GO." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 30,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five. Final push." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "60s sprint","duration_sec": 60,  "rpm_low": 95, "rpm_high": 108, "resistance": 8, "audio_cue": "Last sixty. EVERYTHING." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 60,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "That's the peak." },
-            { "type": "work",     "label": "45s sprint","duration_sec": 45,  "rpm_low": 98, "rpm_high": 112, "resistance": 8, "audio_cue": "Forty-five down." },
-            { "type": "rest",     "label": "Recovery",  "duration_sec": 45,  "rpm_low": 70, "rpm_high": 80, "resistance": 2, "audio_cue": "Off." },
-            { "type": "work",     "label": "30s sprint","duration_sec": 30,  "rpm_low": 100, "rpm_high": 115, "resistance": 8, "audio_cue": "Final sprint. Last thirty. GO." },
-            { "type": "cooldown", "label": "Cool down", "duration_sec": 300, "rpm_low": 65, "rpm_high": 78, "resistance": 2, "audio_cue": "Three ladders. That is elite. Spin every bit of that out." }
+            {
+              "type": "warmup",
+              "label": "Warm up",
+              "duration_sec": 300,
+              "rpm_low": 78,
+              "rpm_high": 92,
+              "resistance": 18,
+              "audio_cue": "Full warm up. Three ladders ahead."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Ladder one. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 30,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "60s sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 108,
+              "resistance": 30,
+              "audio_cue": "Sixty. Top. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 60,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five down."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Thirty. Ladder one done."
+            },
+            {
+              "type": "rest",
+              "label": "Rest set",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Five minutes. Ladder two coming."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Ladder two. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 30,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "60s sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 108,
+              "resistance": 30,
+              "audio_cue": "Top again. Everything."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 60,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Ladder two done. Thirty."
+            },
+            {
+              "type": "rest",
+              "label": "Rest set",
+              "duration_sec": 300,
+              "rpm_low": 75,
+              "rpm_high": 85,
+              "resistance": 15,
+              "audio_cue": "Five minutes. Final ladder."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Last ladder. GO."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 30,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five. Final push."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "60s sprint",
+              "duration_sec": 60,
+              "rpm_low": 95,
+              "rpm_high": 108,
+              "resistance": 30,
+              "audio_cue": "Last sixty. EVERYTHING."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 60,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "That's the peak."
+            },
+            {
+              "type": "work",
+              "label": "45s sprint",
+              "duration_sec": 45,
+              "rpm_low": 98,
+              "rpm_high": 112,
+              "resistance": 30,
+              "audio_cue": "Forty-five down."
+            },
+            {
+              "type": "rest",
+              "label": "Recovery",
+              "duration_sec": 45,
+              "rpm_low": 70,
+              "rpm_high": 80,
+              "resistance": 10,
+              "audio_cue": "Off."
+            },
+            {
+              "type": "work",
+              "label": "30s sprint",
+              "duration_sec": 30,
+              "rpm_low": 100,
+              "rpm_high": 115,
+              "resistance": 30,
+              "audio_cue": "Final sprint. Last thirty. GO."
+            },
+            {
+              "type": "cooldown",
+              "label": "Cool down",
+              "duration_sec": 300,
+              "rpm_low": 65,
+              "rpm_high": 78,
+              "resistance": 10,
+              "audio_cue": "Three ladders. That is elite. Spin every bit of that out."
+            }
           ]
         }
       ]
