@@ -36,7 +36,7 @@
         <p id="preview-phases" style="margin-top:6px;font-size:13px;color:var(--text-secondary);"></p>
     </div>
 
-    <button id="start-btn" class="btn btn-start hidden" onclick="startRide()">START RIDE</button>
+    <button id="start-btn" class="btn btn-start hidden" onclick="startRide()">Let's SPIN! 🚴</button>
 </div>
 @endsection
 
@@ -100,7 +100,7 @@ function startRide() {
 }
 
 function switchUser() {
-    fetch('/api/users/deselect', {
+    fetch('/users/deselect', {
         method: 'POST',
         headers: { 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' },
     }).then(() => window.location.href = '/select-user');

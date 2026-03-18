@@ -18,6 +18,10 @@ Route::get('/', function () {
 
 Route::get('/select-user', [UserController::class, 'select']);
 Route::get('/users/create', [UserController::class, 'create']);
+Route::post('/users', [UserController::class, 'apiStore']);
+Route::post('/users/select', [UserController::class, 'apiSelect']);
+Route::post('/users/deselect', [UserController::class, 'apiDeselect']);
+Route::delete('/users/{id}', [UserController::class, 'apiDestroy']);
 
 // Protected routes (require active rider)
 Route::middleware('current-user')->group(function () {

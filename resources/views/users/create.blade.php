@@ -60,7 +60,7 @@ function createUser() {
     const name = document.getElementById('name').value.trim();
     if (!name) return;
 
-    fetch('/api/users', {
+    fetch('/users', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

@@ -60,4 +60,14 @@ class UserController extends Controller
         $request->session()->forget('user_id');
         return response()->json(['data' => null, 'error' => null]);
     }
+
+    public function apiDestroy(Request $request, int $id): JsonResponse
+    {
+        $user = User::findOrFail($id);
+        if ($request->session()->get('user_id') === $user->id) {
+            $request->session()->forget('user_id');
+        }
+        $user->delete();
+        return response()->json(['data' => null, 'error' => null]);
+    }
 }

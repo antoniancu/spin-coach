@@ -76,6 +76,31 @@ a {
     font-weight: 600;
 }
 
+.user-card {
+    position: relative;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 14px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    line-height: 1;
+    opacity: 0.4;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+    color: #e05252;
+    background: rgba(224, 82, 82, 0.1);
+}
+
 .user-card.add-new {
     border: 2px dashed var(--border);
     color: var(--text-secondary);
@@ -380,4 +405,62 @@ h2 {
 
 .hidden {
     display: none !important;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 32px;
+    max-width: 360px;
+    width: 90%;
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 12px;
+}
+
+.modal-body {
+    color: var(--text-secondary);
+    margin: 0 0 24px;
+    line-height: 1.5;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-danger {
+    background: #e05252;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
 }
