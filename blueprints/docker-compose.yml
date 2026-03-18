@@ -1,0 +1,29 @@
+# SpinCoach — MariaDB container
+# Run from /Users/antoniancu/Development/spin-coach/
+# Usage: docker compose up -d
+
+services:
+  db:
+    image: mariadb:11.2
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USERNAME}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  mariadb_data:
+    # Named volume — managed by Docker/OrbStack
+    # Data persists across container restarts
+    # To back up: docker run --rm -v spin-coach_mariadb_data:/data -v $(pwd):/backup alpine tar czf /backup/mariadb-backup.tar.gz /data
+    # To wipe and start fresh: docker compose down -v && docker compose up -d

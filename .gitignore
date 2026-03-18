@@ -1,0 +1,10 @@
+.DS_Store
+**/.DS_Store
+.env
+vendor/
+node_modules/
+storage/logs/*.log
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+bootstrap/cache/
