@@ -41,7 +41,7 @@
         <p id="preview-phases" style="margin-top:8px;font-size:13px;color:var(--text-secondary);"></p>
     </div>
 
-    <button id="start-btn" class="btn btn-start hidden" onclick="startRide()">Let's SPIN! 🚴</button>
+    <button id="start-btn" class="btn btn-start hidden" style="margin-bottom:100px;" onclick="startRide()">Let's SPIN! 🚴</button>
 </div>
 @endsection
 
@@ -83,13 +83,19 @@ function fetchWorkout() {
     });
 }
 
+function intensityColor(resistance) {
+    if (resistance <= 10) return '#3b82f6';  // blue — recovery
+    if (resistance <= 15) return '#f59e0b';  // yellow — easy
+    if (resistance <= 20) return '#f97316';  // orange — moderate
+    return '#ef4444';                         // red — hard (20+)
+}
+
 function buildPreviewProfile(phases, totalMin) {
     const container = document.getElementById('preview-profile');
     container.innerHTML = '';
 
     const totalSec = phases.reduce((s, p) => s + p.duration_sec, 0);
-    const maxRes = Math.max(...phases.map(p => p.resistance), 1);
-    const colors = { warmup: '#f59e0b', work: '#ef4444', rest: '#10b981', cooldown: '#2563eb' };
+    const maxRes = 50; // fixed scale — C6 practical max
 
     // Build 1-minute bars
     const bars = [];
@@ -102,6 +108,7 @@ function buildPreviewProfile(phases, totalMin) {
             const fraction = (barEnd - secCursor) / 60;
             bars.push({
                 resistance: phase.resistance,
+                rpm: Math.round((phase.rpm_low + phase.rpm_high) / 2),
                 type: phase.type,
                 fraction: fraction,
                 label: phase.label,
@@ -120,31 +127,32 @@ function buildPreviewProfile(phases, totalMin) {
 
         const fill = document.createElement('div');
         fill.className = 'preview-bar-fill';
-        const heightPct = (bar.resistance / maxRes) * 100;
-        fill.style.height = heightPct + '%';
-        fill.style.background = colors[bar.type] || '#555';
-
-        const levelLabel = document.createElement('span');
-        levelLabel.className = 'preview-bar-level';
-        levelLabel.textContent = bar.resistance;
+        // Height = tempo (RPM), color = intensity zone (resistance)
+        fill.style.height = Math.max(8, (bar.rpm / 130) * 100) + '%';
+        fill.style.background = intensityColor(bar.resistance);
 
         col.appendChild(fill);
 
-        // Show level label at phase transitions or every few bars
-        if (i === 0 || bars[i - 1].resistance !== bar.resistance) {
-            fill.appendChild(levelLabel);
+        // Show intensity/tempo label at phase transitions
+        if (i === 0 || bars[i - 1].resistance !== bar.resistance || bars[i - 1].rpm !== bar.rpm) {
+            const lbl = document.createElement('span');
+            lbl.className = 'preview-bar-level';
+            lbl.textContent = bar.resistance + '/' + bar.rpm;
+            fill.appendChild(lbl);
         }
 
         wrap.appendChild(col);
     });
 
-    // Minute markers below
+    // Minute markers below — derived from actual totalSec so ticks align with bars
+    const actualMin = totalSec / 60;
+    const step = actualMin <= 25 ? 5 : 10;
     const axis = document.createElement('div');
     axis.className = 'preview-axis';
-    for (let m = 0; m <= totalMin; m += 5) {
+    for (let m = 0; m <= actualMin; m += step) {
         const tick = document.createElement('span');
         tick.className = 'preview-tick';
-        tick.style.left = (m / totalMin * 100) + '%';
+        tick.style.left = (m / actualMin * 100) + '%';
         tick.textContent = m + 'm';
         axis.appendChild(tick);
     }

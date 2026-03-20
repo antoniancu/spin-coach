@@ -42,7 +42,60 @@ const AICoach = (() => {
 
         checkIntervalId = setInterval(evaluate, CHECK_INTERVAL);
         telemetryIntervalId = setInterval(recordTelemetry, TELEMETRY_INTERVAL);
-        notify('Jocko is watching.');
+
+        // Unlock iOS audio with user-gesture context and greet the rider
+        unlockAudioAndGreet();
+    }
+
+    function unlockAudioAndGreet() {
+        // Unlock HTML5 Audio on iOS by playing a silent clip in user gesture context
+        try {
+            const silence = new Audio('data:audio/mpeg;base64,/+NIxAAAAAANIAAAAAExBTUUzLjEwMFVVVVVVVVVVVVVV');
+            silence.volume = 0;
+            silence.play().catch(() => {});
+        } catch (e) {}
+
+        // Also unlock speechSynthesis on iOS
+        if ('speechSynthesis' in window) {
+            const warmup = new SpeechSynthesisUtterance('');
+            warmup.volume = 0;
+            speechSynthesis.speak(warmup);
+        }
+
+        // Request a greeting cue from the coach
+        const state = {
+            trigger: 'phase_change',
+            phase_type: 'warmup',
+            phase_label: 'Session start',
+            time_remaining_sec: 0,
+            cadence_rpm: 0,
+            target_rpm_low: 0,
+            target_rpm_high: 0,
+            heart_rate_bpm: null,
+            speed_kmh: null,
+            distance_km: null,
+            resistance_actual: 0,
+            resistance_target: 0,
+            context: 'Rider just started the session. Greet them by name and set the tone. Keep it to one punchy line.',
+        };
+
+        fetch('/api/coach/cue', {
+            method: 'POST',
+            headers: headers(),
+            body: JSON.stringify(state),
+        })
+        .then(r => r.json())
+        .then(res => {
+            if (!res.data) { notify('Coach active'); return; }
+            const { text, has_audio, audio_url } = res.data;
+            if (text) notify(text);
+            if (has_audio && audio_url) {
+                playAudioUrl(audio_url);
+            } else if (text) {
+                fallbackSpeak(text);
+            }
+        })
+        .catch(() => { notify('Coach active'); });
     }
 
     function stop() {
@@ -202,10 +255,10 @@ const AICoach = (() => {
         .then(r => r.json())
         .then(res => {
             if (!res.data) return;
-            const { text, audio } = res.data;
+            const { text, has_audio, audio_url } = res.data;
             if (text) notify(text);
-            if (audio) {
-                playAudioBase64(audio);
+            if (has_audio && audio_url) {
+                playAudioUrl(audio_url);
             } else if (text) {
                 fallbackSpeak(text);
             }
@@ -215,21 +268,18 @@ const AICoach = (() => {
 
     // --- Audio playback ---
 
-    function playAudioBase64(base64) {
+    function playAudioUrl(url) {
         try {
-            const bytes = atob(base64);
-            const buffer = new Uint8Array(bytes.length);
-            for (let i = 0; i < bytes.length; i++) buffer[i] = bytes.charCodeAt(i);
-
-            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-            audioCtx.decodeAudioData(buffer.buffer, decoded => {
-                const source = audioCtx.createBufferSource();
-                source.buffer = decoded;
-                source.connect(audioCtx.destination);
-                source.start(0);
+            const audio = new Audio(url);
+            audio.onerror = () => {
+                fallbackSpeak(document.getElementById('coach-text')?.textContent || '');
+            };
+            audio.play().catch(() => {
+                fallbackSpeak(document.getElementById('coach-text')?.textContent || '');
             });
-        } catch (e) { /* silent fallback */ }
+        } catch (e) {
+            fallbackSpeak(document.getElementById('coach-text')?.textContent || '');
+        }
     }
 
     function fallbackSpeak(text) {

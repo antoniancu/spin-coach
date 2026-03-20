@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 // All API routes use web middleware so sessions are shared with the browser
 Route::middleware('web')->group(function () {
+    // TTS audio (no auth — cached MP3 served by text hash)
+    Route::get('/coach/tts', [CoachController::class, 'apiTTS']);
+
     // User management (no auth required — used by the picker)
     Route::get('/users', [UserController::class, 'apiIndex']);
 

@@ -6,13 +6,16 @@ namespace App\Http\Controllers;
 
 use App\Models\WorkoutSession;
 use App\Services\AICoachService;
+use App\Services\ElevenLabsService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CoachController extends Controller
 {
     public function __construct(
         private readonly AICoachService $coach,
+        private readonly ElevenLabsService $tts,
     ) {}
 
     /**
@@ -38,7 +41,36 @@ class CoachController extends Controller
 
         $result = $this->coach->coachWithVoice($validated);
 
-        return response()->json(['data' => $result, 'error' => null]);
+        return response()->json([
+            'data' => [
+                'text' => $result['text'],
+                'has_audio' => $result['audio'] !== null,
+                'audio_url' => $result['text'] ? '/api/coach/tts?' . http_build_query(['text' => $result['text']]) : null,
+            ],
+            'error' => null,
+        ]);
+    }
+
+    /**
+     * Serve TTS audio as a streamable MP3 file.
+     */
+    public function apiTTS(Request $request): Response
+    {
+        $text = $request->input('text', '');
+        if (empty($text)) {
+            return response('', 400);
+        }
+
+        $audio = $this->tts->textToSpeech($text);
+        if (!$audio) {
+            return response('', 503);
+        }
+
+        return response($audio, 200, [
+            'Content-Type' => 'audio/mpeg',
+            'Content-Length' => strlen($audio),
+            'Cache-Control' => 'public, max-age=31536000',
+        ]);
     }
 
     /**

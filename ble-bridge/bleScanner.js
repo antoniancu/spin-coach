@@ -18,7 +18,7 @@ let lastCrankTime = null;
 let lastWheelRevs = null;
 let lastWheelTime = null;
 let totalWheelRevs = 0;
-const WHEEL_CIRCUMFERENCE_M = 2.096; // 700c equivalent — standard for IC Bike
+const WHEEL_CIRCUMFERENCE_M = 1.886; // calibrated for C6 (~10% below 700c default)
 
 function onData(cb) {
     dataCallback = cb;

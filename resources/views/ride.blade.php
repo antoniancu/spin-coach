@@ -8,21 +8,13 @@
     <div class="ride-phase-label" id="phase-type">LOADING</div>
     <div class="ride-phase-name" id="phase-label">Preparing...</div>
     <div class="ride-timer" id="timer">--:--</div>
-    <div class="ride-cadence" id="cadence-target"></div>
-    <div class="resistance-control" id="resistance-control">
-        <button class="res-btn res-minus" onclick="adjustResistance(-1)" aria-label="Decrease">−</button>
-        <div class="res-display" id="resistance-display">
-            <span class="res-actual" id="res-actual">--</span>
-            <span class="res-label">/100</span>
-            <span class="res-target" id="res-target-hint"></span>
-        </div>
-        <button class="res-btn res-plus" onclick="adjustResistance(1)" aria-label="Increase">+</button>
-    </div>
+    <div class="coach-text" id="coach-text"></div>
 
     <div class="ble-live">
         <div class="ble-metric">
             <span class="ble-metric-value" id="live-cadence">--</span>
             <span class="ble-metric-label">RPM</span>
+            <span class="ble-metric-target" id="cadence-target"></span>
         </div>
         <div class="ble-zone" id="cadence-zone">--</div>
         <div class="ble-metric">
@@ -31,7 +23,16 @@
         </div>
     </div>
 
-    <div class="ble-live ble-live-secondary">
+    <div class="resistance-control" id="resistance-control">
+        <button class="res-btn res-minus" onclick="adjustResistance(-1)" aria-label="Decrease">−</button>
+        <div class="res-display" id="resistance-display">
+            <div class="res-inline"><span class="res-actual" id="res-actual">--</span><span class="res-label">/100</span></div>
+            <span class="res-target" id="res-target-hint"></span>
+        </div>
+        <button class="res-btn res-plus" onclick="adjustResistance(1)" aria-label="Increase">+</button>
+    </div>
+
+    <div class="ble-live ble-live-secondary" style="margin-top:12px;">
         <div class="ble-metric">
             <span class="ble-metric-value ble-metric-sm" id="live-speed">--</span>
             <span class="ble-metric-label">KM/H</span>
@@ -45,8 +46,14 @@
     <div class="ride-phase-position" id="phase-position"></div>
 
     <div class="ride-profile-wrap">
-        <svg id="workout-profile" class="ride-profile" preserveAspectRatio="none"></svg>
+        <div id="workout-profile" class="preview-bars" style="height:80px;"></div>
+        <svg id="ride-overlay" class="ride-overlay" preserveAspectRatio="none"></svg>
         <div class="ride-profile-cursor" id="profile-cursor"></div>
+        <div id="ride-profile-axis" class="preview-axis"></div>
+    </div>
+
+    <div class="ride-stats-row">
+        <span class="ride-stat" id="stat-calories">0 <small>cal</small></span>
     </div>
 
     <div class="ride-progress">
@@ -56,12 +63,11 @@
     <div class="ride-next" id="next-phase"></div>
 
     <div class="dj-bar" id="dj-bar">
-        <button class="dj-toggle" id="dj-toggle" onclick="toggleDJ()">DJ Mode</button>
-        <button class="dj-toggle" id="coach-toggle" onclick="toggleCoach()">AI Coach</button>
+        <button class="dj-toggle" id="dj-toggle" onclick="toggleDJ()">DJ</button>
+        <button class="dj-toggle" id="coach-toggle" onclick="toggleCoach()">Coach</button>
     </div>
-    <div class="coach-text" id="coach-text"></div>
 
-    <button class="btn btn-stop" style="max-width:200px;margin-top:40px;" onclick="endRide()">End Ride</button>
+    <button class="btn btn-stop" style="max-width:200px;margin-top:40px;margin-bottom:100px;" onclick="endRide()">End Ride</button>
 </div>
 @endsection
 
@@ -83,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('live-cadence').textContent = rpm;
         WorkoutPlayer.recordCadence(rpm);
         updateZone(rpm);
+        recordOverlayPoint();
     });
 
     BleClient.onHR(bpm => {
@@ -112,81 +119,237 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+function intensityColor(resistance) {
+    if (resistance <= 10) return '#3b82f6';  // blue — recovery
+    if (resistance <= 15) return '#f59e0b';  // yellow — easy
+    if (resistance <= 20) return '#f97316';  // orange — moderate
+    return '#ef4444';                         // red — hard (20+)
+}
+
 function buildProfile(phases) {
-    const svg = document.getElementById('workout-profile');
+    const container = document.getElementById('workout-profile');
+    container.innerHTML = '';
+
     const totalSec = phases.reduce((s, p) => s + p.duration_sec, 0);
-    const maxRes = Math.max(...phases.map(p => p.resistance), 1);
+    const maxRes = 50; // fixed scale — C6 practical max
 
-    const W = 1000;
-    const H = 80;
-    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    // Build 1-minute bars (same approach as home preview)
+    const bars = [];
+    let secCursor = 0;
+    let phaseIdx = 0;
 
-    const colors = { warmup: '#f59e0b', work: '#ef4444', rest: '#10b981', cooldown: '#2563eb' };
-    let x = 0;
-
-    phases.forEach((phase, i) => {
-        const w = (phase.duration_sec / totalSec) * W;
-        const h = (phase.resistance / maxRes) * (H - 10) + 10;
-        const y = H - h;
-
-        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        rect.setAttribute('x', x);
-        rect.setAttribute('y', y);
-        rect.setAttribute('width', w);
-        rect.setAttribute('height', h);
-        rect.setAttribute('fill', colors[phase.type] || '#555');
-        rect.setAttribute('opacity', '0.35');
-        rect.setAttribute('data-phase', i);
-        rect.setAttribute('rx', '2');
-        svg.appendChild(rect);
-
-        // Minute markers
-        const mins = Math.floor(phase.duration_sec / 60);
-        if (mins >= 2) {
-            for (let m = 1; m < mins; m++) {
-                const mx = x + (m * 60 / phase.duration_sec) * w;
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', mx);
-                line.setAttribute('x2', mx);
-                line.setAttribute('y1', y);
-                line.setAttribute('y2', H);
-                line.setAttribute('stroke', 'rgba(255,255,255,0.08)');
-                line.setAttribute('stroke-width', '0.5');
-                svg.appendChild(line);
-            }
+    phases.forEach((phase, pi) => {
+        const phaseEnd = secCursor + phase.duration_sec;
+        while (secCursor < phaseEnd) {
+            const barEnd = Math.min(secCursor + 60, phaseEnd);
+            bars.push({
+                resistance: phase.resistance,
+                rpm: Math.round((phase.rpm_low + phase.rpm_high) / 2),
+                type: phase.type,
+                fraction: (barEnd - secCursor) / 60,
+                phaseIndex: pi,
+            });
+            secCursor = barEnd;
         }
-
-        x += w;
     });
 
-    // Store for cursor updates
-    window._profileData = { totalSec, W };
+    bars.forEach((bar, i) => {
+        const col = document.createElement('div');
+        col.className = 'preview-bar-col';
+        col.style.flex = bar.fraction;
+        col.dataset.phase = bar.phaseIndex;
+
+        const fill = document.createElement('div');
+        fill.className = 'preview-bar-fill';
+        // Height = tempo (RPM), color = intensity zone (resistance)
+        fill.style.height = Math.max(8, (bar.rpm / 130) * 100) + '%';
+        fill.style.background = intensityColor(bar.resistance);
+
+        // Level label at resistance transitions: intensity/tempo
+        if (i === 0 || bars[i - 1].resistance !== bar.resistance || bars[i - 1].rpm !== bar.rpm) {
+            const lbl = document.createElement('span');
+            lbl.className = 'preview-bar-level';
+            lbl.textContent = bar.resistance + '/' + bar.rpm;
+            fill.appendChild(lbl);
+        }
+
+        col.appendChild(fill);
+        container.appendChild(col);
+    });
+
+    // Time axis
+    const actualMin = totalSec / 60;
+    const step = actualMin <= 25 ? 5 : 10;
+    const axis = document.getElementById('ride-profile-axis');
+    axis.innerHTML = '';
+    for (let m = 0; m <= actualMin; m += step) {
+        const tick = document.createElement('span');
+        tick.className = 'preview-tick';
+        tick.style.left = (m / actualMin * 100) + '%';
+        tick.textContent = m + 'm';
+        axis.appendChild(tick);
+    }
+
+    window._profileData = { totalSec };
 }
 
 function updateProfileCursor(phaseIndex, phaseElapsedSec) {
     if (!window._profileData) return;
-    const { totalSec, W } = window._profileData;
-    const svg = document.getElementById('workout-profile');
+    const { totalSec } = window._profileData;
+    const container = document.getElementById('workout-profile');
     const cursor = document.getElementById('profile-cursor');
 
-    // Calculate elapsed seconds up to current phase
+    // Calculate elapsed seconds
     let elapsed = 0;
     for (let i = 0; i < phaseIndex; i++) elapsed += PHASES[i].duration_sec;
     elapsed += phaseElapsedSec;
 
-    const pct = (elapsed / totalSec) * 100;
-    cursor.style.left = pct + '%';
+    cursor.style.left = (elapsed / totalSec * 100) + '%';
 
     // Highlight current phase, dim past
-    svg.querySelectorAll('rect').forEach(rect => {
-        const pi = parseInt(rect.getAttribute('data-phase'));
-        if (pi < phaseIndex) rect.setAttribute('opacity', '0.15');
-        else if (pi === phaseIndex) rect.setAttribute('opacity', '0.8');
-        else rect.setAttribute('opacity', '0.35');
+    container.querySelectorAll('.preview-bar-col').forEach(col => {
+        const pi = parseInt(col.dataset.phase);
+        const fill = col.querySelector('.preview-bar-fill');
+        if (pi < phaseIndex) fill.style.opacity = '0.2';
+        else if (pi === phaseIndex) fill.style.opacity = '0.9';
+        else fill.style.opacity = '0.6';
     });
 
-    // Update position label
     document.getElementById('phase-position').textContent = 'Phase ' + (phaseIndex + 1) + ' of ' + PHASES.length;
+
+    // Update ride overlay (RPM line + actual resistance bars)
+    updateRideOverlay(elapsed, totalSec);
+}
+
+// --- Ride overlay: RPM line + actual resistance bars ---
+const rideHistory = []; // { elapsed, cadence, resActual, resTarget }
+let lastOverlayUpdate = 0;
+
+function recordOverlayPoint() {
+    if (!window._profileData) return;
+    const { totalSec } = window._profileData;
+    const cadence = typeof BleClient !== 'undefined' ? BleClient.getCadence() : 0;
+    const resA = typeof currentResistance !== 'undefined' ? currentResistance : 0;
+    const resT = typeof targetResistance !== 'undefined' ? targetResistance : 0;
+
+    let elapsed = 0;
+    const pi = WorkoutPlayer.getPhaseIndex();
+    for (let i = 0; i < pi && i < PHASES.length; i++) elapsed += PHASES[i].duration_sec;
+    // Approximate current phase elapsed from cursor position
+    const cursor = document.getElementById('profile-cursor');
+    const pct = parseFloat(cursor?.style.left) || 0;
+    elapsed = (pct / 100) * totalSec;
+
+    const hr = typeof BleClient !== 'undefined' ? BleClient.getHR() : 0;
+    rideHistory.push({ elapsed, cadence, hr, resActual: resA, resTarget: resT });
+}
+
+function updateRideOverlay(elapsed, totalSec) {
+    const svg = document.getElementById('ride-overlay');
+    if (!svg || rideHistory.length < 2) return;
+
+    const W = svg.clientWidth || 400;
+    const H = 80;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+    // Clear previous
+    svg.innerHTML = '';
+
+    const maxRPM = 130;
+    const maxRes = 50;
+
+    // Draw actual resistance bars (behind RPM line)
+    let prevX = -1;
+    const barWidth = Math.max(2, W / (totalSec / 5)); // ~1 bar per 5s of data
+
+    rideHistory.forEach(pt => {
+        const x = (pt.elapsed / totalSec) * W;
+        if (x - prevX < barWidth * 0.8) return; // skip if too close
+        prevX = x;
+
+        const h = (pt.resActual / maxRes) * H;
+        const y = H - h;
+
+        // Color based on deviation from target
+        let color;
+        if (pt.resTarget <= 0) color = 'rgba(160,160,160,0.3)';
+        else if (pt.resActual < pt.resTarget - 3) color = 'rgba(239,68,68,0.4)'; // red — below
+        else if (pt.resActual > pt.resTarget + 3) color = 'rgba(245,158,11,0.4)'; // yellow — above
+        else color = 'rgba(16,185,129,0.4)'; // green — on target
+
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x', x - barWidth / 2);
+        rect.setAttribute('y', y);
+        rect.setAttribute('width', barWidth);
+        rect.setAttribute('height', h);
+        rect.setAttribute('fill', color);
+        rect.setAttribute('rx', '1');
+        svg.appendChild(rect);
+    });
+
+    // Draw RPM polyline
+    let points = '';
+    rideHistory.forEach(pt => {
+        const x = (pt.elapsed / totalSec) * W;
+        const y = H - (Math.min(pt.cadence, maxRPM) / maxRPM) * (H - 4) - 2;
+        points += x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+    });
+
+    if (points) {
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        line.setAttribute('points', points.trim());
+        line.setAttribute('fill', 'none');
+        line.setAttribute('stroke', '#fff');
+        line.setAttribute('stroke-width', '1.5');
+        line.setAttribute('stroke-opacity', '0.7');
+        line.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(line);
+
+        // Draw target RPM range as a subtle band
+        let targetPoints = '';
+        let targetPointsBottom = '';
+        const target = WorkoutPlayer.getCurrentTarget();
+        if (target) {
+            const yLow = H - (target.low / maxRPM) * (H - 4) - 2;
+            const yHigh = H - (target.high / maxRPM) * (H - 4) - 2;
+            // Only draw band for the area up to current elapsed
+            const xNow = (rideHistory[rideHistory.length - 1].elapsed / totalSec) * W;
+            const band = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            band.setAttribute('x', '0');
+            band.setAttribute('y', yHigh);
+            band.setAttribute('width', xNow);
+            band.setAttribute('height', yLow - yHigh);
+            band.setAttribute('fill', 'rgba(124,58,237,0.1)');
+            svg.insertBefore(band, svg.firstChild);
+        }
+    }
+
+    // Draw HR polyline (red)
+    const maxHR = 200;
+    let hrPoints = '';
+    rideHistory.forEach(pt => {
+        if (pt.hr > 0) {
+            const x = (pt.elapsed / totalSec) * W;
+            const y = H - (Math.min(pt.hr, maxHR) / maxHR) * (H - 4) - 2;
+            hrPoints += x.toFixed(1) + ',' + y.toFixed(1) + ' ';
+        }
+    });
+
+    if (hrPoints) {
+        const hrLine = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        hrLine.setAttribute('points', hrPoints.trim());
+        hrLine.setAttribute('fill', 'none');
+        hrLine.setAttribute('stroke', '#ef4444');
+        hrLine.setAttribute('stroke-width', '1.5');
+        hrLine.setAttribute('stroke-opacity', '0.6');
+        hrLine.setAttribute('stroke-linejoin', 'round');
+        svg.appendChild(hrLine);
+    }
+}
+
+function updateCalorieDisplay(cal) {
+    const el = document.getElementById('stat-calories');
+    if (el) el.innerHTML = cal + ' <small>cal</small>';
 }
 
 function updateZone(rpm) {

@@ -13,6 +13,11 @@ const WorkoutPlayer = (() => {
     let aborted = false;
     let cadenceSamples = [];
     let hrSamples = [];
+    let allCadenceSamples = [];
+    let allHRSamples = [];
+    let peakHR = 0;
+    let totalCalories = 0;
+    let lastCalorieTick = 0;
     let paused = false;
     let pauseStartTime = 0;
     let totalPausedMs = 0;
@@ -67,7 +72,7 @@ const WorkoutPlayer = (() => {
         els.phaseType.textContent = waitingForFirstPedal ? 'START PEDALLING' : phase.type.toUpperCase();
         els.timer.style.opacity = waitingForFirstPedal ? '0.4' : '1';
         els.phaseLabel.textContent = phase.label;
-        els.cadence.textContent = phase.rpm_low + '–' + phase.rpm_high + ' RPM';
+        els.cadence.textContent = 'target ' + phase.rpm_low + '–' + phase.rpm_high;
         // Update resistance control if available, otherwise fallback to text
         if (typeof setResistanceDisplay === 'function') {
             setResistanceDisplay(phase.resistance, phase.resistance);
@@ -115,9 +120,23 @@ const WorkoutPlayer = (() => {
         const progress = Math.min(100, (elapsed / totalMs) * 100);
         els.progressBar.style.width = progress + '%';
 
-        // Update workout profile cursor
+        // Update workout profile cursor + overlay
         if (typeof updateProfileCursor === 'function') {
             updateProfileCursor(currentPhaseIndex, Math.floor(elapsed / 1000));
+        }
+
+        // Calorie estimation: cal/sec = (cadence * resistance * 0.005 + 2) / 60
+        if (timestamp - lastCalorieTick >= 1000) {
+            const cadence = typeof BleClient !== 'undefined' ? BleClient.getCadence() : 0;
+            const res = typeof currentResistance !== 'undefined' ? currentResistance : 0;
+            if (cadence > 0) {
+                const calPerMin = cadence * res * 0.005 + 2;
+                totalCalories += calPerMin / 60; // 1 second worth
+            }
+            lastCalorieTick = timestamp;
+            if (typeof updateCalorieDisplay === 'function') {
+                updateCalorieDisplay(Math.round(totalCalories));
+            }
         }
 
         // 5-second warning
@@ -183,6 +202,10 @@ const WorkoutPlayer = (() => {
             body: JSON.stringify({
                 completed: completed,
                 duration_actual_sec: totalSec,
+                avg_cadence_rpm: allCadenceSamples.length ? Math.round(allCadenceSamples.reduce((a, b) => a + b, 0) / allCadenceSamples.length) : null,
+                avg_heart_rate_bpm: allHRSamples.length ? Math.round(allHRSamples.reduce((a, b) => a + b, 0) / allHRSamples.length) : null,
+                peak_heart_rate_bpm: peakHR > 0 ? peakHR : null,
+                calories_estimate: Math.round(totalCalories) > 0 ? Math.round(totalCalories) : null,
             }),
         })
         .then(r => r.json())
@@ -299,15 +322,16 @@ const WorkoutPlayer = (() => {
 
     function recordCadence(rpm) {
         cadenceSamples.push(rpm);
+        if (rpm > 0) allCadenceSamples.push(rpm);
 
-        if (rpm >= 5 && paused && !aborted) {
+        if (rpm >= 11 && paused && !aborted) {
             // Resume from pause (or first pedal)
             totalPausedMs += performance.now() - pauseStartTime;
             paused = false;
             waitingForFirstPedal = false;
             els.phaseType.textContent = phases[currentPhaseIndex].type.toUpperCase();
             els.timer.style.opacity = '1';
-        } else if (rpm <= 0 && !paused && !aborted) {
+        } else if (rpm < 11 && !paused && !aborted) {
             // Stopped pedalling — pause
             paused = true;
             pauseStartTime = performance.now();
@@ -315,13 +339,21 @@ const WorkoutPlayer = (() => {
             els.timer.style.opacity = '0.4';
         }
     }
-    function recordHR(bpm) { hrSamples.push(bpm); }
+    function recordHR(bpm) {
+        hrSamples.push(bpm);
+        if (bpm > 0) {
+            allHRSamples.push(bpm);
+            if (bpm > peakHR) peakHR = bpm;
+        }
+    }
     function getCurrentTarget() {
         if (aborted || currentPhaseIndex >= phases.length) return null;
         const p = phases[currentPhaseIndex];
         return { low: p.rpm_low, high: p.rpm_high };
     }
     function isPaused() { return paused; }
+    function getCalories() { return Math.round(totalCalories); }
+    function getPhaseIndex() { return currentPhaseIndex; }
 
-    return { init, abort, recordCadence, recordHR, getCurrentTarget, isPaused };
+    return { init, abort, recordCadence, recordHR, getCurrentTarget, isPaused, getCalories, getPhaseIndex };
 })();
